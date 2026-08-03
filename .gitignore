@@ -1,0 +1,30 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+
+# PWA generated files
+public/sw.js
+public/workbox-*.js
+public/fallback-*.js
+
+# env
+.env
+.env.local
+.env.*.local
+
+# build
+dist/
+build/
+
+# misc
+.DS_Store
+*.log
+npm-debug.log*
+
+# editor
+.vscode/*
+!.vscode/extensions.json

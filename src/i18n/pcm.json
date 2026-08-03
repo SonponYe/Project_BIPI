@@ -1,0 +1,14 @@
+{
+  "_note": "Draft Ghanaian Pidgin — review by a fluent speaker/local-language consultant before shipping, per pitch Section 9 (Data Governance Lead's responsibility).",
+  "language_prompt": "How you want use dis app?",
+  "onboarding_am": "I be...",
+  "onboarding_care": "Wetin I dey care about pass...",
+  "onboarding_prefer": "I like to...",
+  "consent_title": "Help Ghana understand climate risk dem",
+  "consent_body": "BIPI dey learn from how people dey use am, so e fit help Ghana understand climate risk better. Dem no go link your answers to your name or your phone. You gree make your learning data share anonymous like dis?",
+  "consent_yes": "Yes, share am anonymous",
+  "consent_no": "No, make I just learn",
+  "tracks_heading": "Choose track",
+  "journal_heading": "Your journal",
+  "leaderboard_heading": "District leaderboard"
+}

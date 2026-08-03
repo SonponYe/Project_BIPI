@@ -1,0 +1,14 @@
+{
+  "_note": "PLACEHOLDER — not yet translated. Twi is the default onboarding language (pitch Stage 1), so this file must be reviewed and completed by a fluent speaker or via scripts/generate-module-content.ts (Claude localisation) before launch. Do not ship English text under Twi labels.",
+  "language_prompt": "",
+  "onboarding_am": "",
+  "onboarding_care": "",
+  "onboarding_prefer": "",
+  "consent_title": "",
+  "consent_body": "",
+  "consent_yes": "",
+  "consent_no": "",
+  "tracks_heading": "",
+  "journal_heading": "",
+  "leaderboard_heading": ""
+}

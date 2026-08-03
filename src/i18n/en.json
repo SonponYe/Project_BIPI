@@ -1,0 +1,13 @@
+{
+  "language_prompt": "How do you prefer to use the app?",
+  "onboarding_am": "I am...",
+  "onboarding_care": "I care most about...",
+  "onboarding_prefer": "I prefer to...",
+  "consent_title": "Help Ghana understand climate risks",
+  "consent_body": "BIPI learns from how people use it to help Ghana understand climate risks better. Your answers are never linked to your name or your phone. Do you agree to share your learning data in this anonymous way?",
+  "consent_yes": "Yes, share anonymously",
+  "consent_no": "No, just let me learn",
+  "tracks_heading": "Choose a track",
+  "journal_heading": "Your journal",
+  "leaderboard_heading": "District leaderboard"
+}

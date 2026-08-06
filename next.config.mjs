@@ -5,6 +5,9 @@ const withPWA = nextPWA({
   register: true,
   skipWaiting: true,
   disable: process.env.NODE_ENV === "development",
+  fallbacks: {
+    document: "/offline.html",
+  },
   // Modules, audio, and quiz progress must survive total connectivity loss —
   // this is the core offline-first requirement, not an optimization.
   runtimeCaching: [

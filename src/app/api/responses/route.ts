@@ -1,13 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createServiceRoleClient } from "@/lib/supabase/server";
+import { ensureGuestUser } from "@/lib/identity/ensure-guest-user";
 
 // Stage 5: Silent Data Capture. Logs one interaction per call — module,
 // topic, track, format, answer, correctness, time spent — tagged only with
 // device_id (never name/phone/email). Called from ModulePlayer on every
 // answer, replay, or drop-off.
+//
+// Uses the service-role client because guest users never hold a Supabase
+// Auth session (see lib/supabase/server.ts for why).
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const supabase = createClient();
+
+  if (!body.deviceId || !body.moduleId) {
+    return NextResponse.json({ error: "deviceId and moduleId are required" }, { status: 400 });
+  }
+
+  const supabase = createServiceRoleClient();
+  await ensureGuestUser(supabase, body.deviceId);
 
   const { error } = await supabase.from("responses").insert({
     device_id: body.deviceId,

@@ -5,7 +5,7 @@ import type { PulseRow } from "@/types/pulse";
 // Reads exclusively from the aggregated `pulse` table — no device_id ever
 // appears in a query this page can issue (pitch Section 7).
 export default async function PartnerDashboardPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data } = await supabase.from("pulse").select("*").order("week", { ascending: false });
 
   const rows: PulseRow[] = (data ?? []).map((row) => ({

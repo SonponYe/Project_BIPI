@@ -1,11 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createServiceRoleClient } from "@/lib/supabase/server";
+import { ensureGuestUser } from "@/lib/identity/ensure-guest-user";
 
 // Opens/closes a session row, used to compute engagement metrics
 // (completion rates by district, connection_type online/offline splits).
+//
+// Uses the service-role client because guest users never hold a Supabase
+// Auth session (see lib/supabase/server.ts for why).
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const supabase = createClient();
+
+  if (!body.deviceId) {
+    return NextResponse.json({ error: "deviceId is required" }, { status: 400 });
+  }
+
+  const supabase = createServiceRoleClient();
+  await ensureGuestUser(supabase, body.deviceId);
 
   const { data, error } = await supabase
     .from("sessions")
@@ -22,7 +32,12 @@ export async function POST(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   const body = await request.json();
-  const supabase = createClient();
+
+  if (!body.sessionId) {
+    return NextResponse.json({ error: "sessionId is required" }, { status: 400 });
+  }
+
+  const supabase = createServiceRoleClient();
 
   const { error } = await supabase
     .from("sessions")

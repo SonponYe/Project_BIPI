@@ -1,0 +1,28 @@
+{
+  "id": 14,
+  "track": "climate-foundations",
+  "title": "Urban Flooding: What Do You Do?",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 20,
+  "body": {
+    "en": "Heavy rain has been falling over Accra for three hours. Water is rising fast on your street, and it's already up to your ankles outside your front door. What do you do?"
+  },
+  "choices": [
+    {
+      "label": "Move yourself and your family to higher ground now, taking only essentials",
+      "isCorrect": true,
+      "consequence": "Right call. Fast-rising water in low-lying, poorly drained areas of Accra can trap people inside homes within minutes. Getting to higher ground early, before the street becomes impassable, is the safest choice."
+    },
+    {
+      "label": "Wait inside to see if the water goes down",
+      "isCorrect": false,
+      "consequence": "Risky. Flash floods in low-lying settlements can rise faster than they recede. Waiting inside can mean you're trapped once the water is too deep or the power/electrics become a hazard."
+    },
+    {
+      "label": "Try to drive through the flooded street to get to safety",
+      "isCorrect": false,
+      "consequence": "Dangerous. Just 30cm of moving water can sweep a car off the road, and you can't see hazards like open drains hidden under floodwater. On foot to higher ground is safer than driving through it."
+    }
+  ]
+}

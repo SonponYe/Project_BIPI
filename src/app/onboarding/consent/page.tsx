@@ -1,27 +1,38 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ConsentScreen } from "@/components/onboarding/ConsentScreen";
-import { createClient } from "@/lib/supabase/client";
 import { getOrCreateDeviceId } from "@/lib/identity/device-id";
 import type { Language } from "@/types/user";
 
 // Stage 3: Consent Screen. Declining still grants full platform access —
 // only the BIPI Pulse aggregation pipeline is skipped.
+//
+// Reads localStorage in an effect rather than at render time: this is a
+// client component, but Next.js still renders it once on the server for the
+// initial HTML, where `window` doesn't exist yet.
 export default function ConsentPage() {
   const router = useRouter();
-  const language = (window.localStorage.getItem("bipi_language") as Language) ?? "tw";
+  const [language, setLanguage] = useState<Language>("tw");
+
+  useEffect(() => {
+    setLanguage((window.localStorage.getItem("bipi_language") as Language) ?? "tw");
+  }, []);
 
   async function handleDecision(consentGiven: boolean) {
     const deviceId = getOrCreateDeviceId();
     const profile = JSON.parse(window.localStorage.getItem("bipi_profile") ?? "{}");
 
-    const supabase = createClient();
-    await supabase.from("users").upsert({
-      device_id: deviceId,
-      gender_type: profile.demographicType,
-      language,
-      consent_given: consentGiven,
+    await fetch("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        deviceId,
+        demographicType: profile.demographicType,
+        language,
+        consentGiven,
+      }),
     });
 
     router.push("/tracks");

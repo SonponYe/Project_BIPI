@@ -1,12 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-export interface ScenarioChoice {
-  label: string;
-  isCorrect: boolean;
-  consequence: string;
-}
+import type { ScenarioChoice } from "@/types/module";
 
 // Timed decision-based exercise (e.g. modules 14, 17, 74, 76, 77 — flooding,
 // disaster risk, household/community emergency).

@@ -1,17 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-export interface DragItem {
-  id: string;
-  label: string;
-  correctZoneId: string;
-}
-
-export interface DropZone {
-  id: string;
-  label: string;
-}
+import type { DragItem, DropZone } from "@/types/module";
 
 // Drag-and-drop exercise (sort waste, fix the drain, plant the right crop —
 // modules 2, 26, 73, 85, 92, 93). Simple enough for basic touchscreens.

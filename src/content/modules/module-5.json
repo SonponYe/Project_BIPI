@@ -1,0 +1,16 @@
+{
+  "id": 5,
+  "track": "climate-foundations",
+  "title": "Accra's Rainy Season, In the News",
+  "format": "news_clip",
+  "assessmentMethod": "Comprehension quiz after real footage",
+  "body": {
+    "en": "Watch this news report on a recent flooding event in Accra, then answer what you saw."
+  },
+  "mediaUrl": "",
+  "questions": [
+    "Which part of Accra did the report say was worst affected?",
+    "What did the report give as a reason the flooding was so severe?",
+    "What did affected residents say they needed most urgently?"
+  ]
+}

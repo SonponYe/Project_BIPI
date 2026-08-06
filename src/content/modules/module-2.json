@@ -1,0 +1,22 @@
+{
+  "id": 2,
+  "track": "climate-foundations",
+  "title": "What's Actually Causing Climate Change?",
+  "format": "mini_game",
+  "assessmentMethod": "Drag-and-drop sorting accuracy",
+  "body": {
+    "en": "Sort each item into the zone that best explains it: is it mostly driven by human activity, or part of a natural cycle?"
+  },
+  "items": [
+    { "id": "gas-flaring", "label": "Gas flaring at oil facilities", "correctZoneId": "human" },
+    { "id": "deforestation", "label": "Clearing forest for farmland", "correctZoneId": "human" },
+    { "id": "vehicle-emissions", "label": "Exhaust from cars and trucks", "correctZoneId": "human" },
+    { "id": "bush-burning", "label": "Bush burning to clear land", "correctZoneId": "human" },
+    { "id": "solar-cycle", "label": "Natural changes in the sun's energy output", "correctZoneId": "natural" },
+    { "id": "volcanic-eruption", "label": "Ash and gas from a volcanic eruption", "correctZoneId": "natural" }
+  ],
+  "zones": [
+    { "id": "human", "label": "Mostly human activity" },
+    { "id": "natural", "label": "Natural cycle" }
+  ]
+}

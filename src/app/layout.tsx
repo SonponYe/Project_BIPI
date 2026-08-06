@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { SessionTracker } from "@/components/SessionTracker";
 
 export const metadata: Metadata = {
   title: "BIPI — Ghana's Ecological Pulse",
@@ -16,7 +17,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-white text-gray-900 antialiased">{children}</body>
+      <body className="min-h-screen bg-white text-gray-900 antialiased">
+        <SessionTracker />
+        {children}
+      </body>
     </html>
   );
 }

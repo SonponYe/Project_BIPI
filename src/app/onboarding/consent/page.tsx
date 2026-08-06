@@ -30,6 +30,7 @@ export default function ConsentPage() {
       body: JSON.stringify({
         deviceId,
         demographicType: profile.demographicType,
+        region: profile.region,
         language,
         consentGiven,
       }),

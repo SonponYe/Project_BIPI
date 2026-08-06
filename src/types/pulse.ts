@@ -1,4 +1,4 @@
-// Mirrors the `pulse` table: aggregated, district-level only — never per-device.
+// Mirrors the `bipi_pulse` table: aggregated, district-level only — never per-device.
 export interface PulseRow {
   region: string;
   topic: string;

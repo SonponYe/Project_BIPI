@@ -1,12 +1,13 @@
 -- Server-side aggregation function called by lib/pulse/aggregate.ts
--- (via the service role client) to (re)build one week of `pulse` rows
--- from consented `responses`, joined against `users` for region/demographic.
-create or replace function aggregate_pulse_for_week(target_week date)
-returns setof pulse
+-- (via the service role client) to (re)build one week of `bipi_pulse` rows
+-- from consented `bipi_responses`, joined against `bipi_users` for
+-- region/demographic.
+create or replace function bipi_aggregate_pulse_for_week(target_week date)
+returns setof bipi_pulse
 language sql
 security definer
 as $$
-  insert into pulse (region, topic, track, user_type, avg_score, fail_rate, drop_off_rate, format_used, week, cohort_size)
+  insert into bipi_pulse (region, topic, track, user_type, avg_score, fail_rate, drop_off_rate, format_used, week, cohort_size)
   select
     coalesce(u.region, 'unknown') as region,
     r.topic,
@@ -18,8 +19,8 @@ as $$
     r.content_format_used as format_used,
     date_trunc('week', target_week)::date as week,
     count(distinct r.device_id) as cohort_size
-  from responses r
-  join users u on u.device_id = r.device_id
+  from bipi_responses r
+  join bipi_users u on u.device_id = r.device_id
   where u.consent_given = true
     and date_trunc('week', r.created_at)::date = date_trunc('week', target_week)::date
   group by region, r.topic, r.track, user_type, format_used

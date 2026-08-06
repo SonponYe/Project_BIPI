@@ -6,7 +6,7 @@ import type { PulseRow } from "@/types/pulse";
 // appears in a query this page can issue (pitch Section 7).
 export default async function PartnerDashboardPage() {
   const supabase = await createClient();
-  const { data } = await supabase.from("pulse").select("*").order("week", { ascending: false });
+  const { data } = await supabase.from("bipi_pulse").select("*").order("week", { ascending: false });
 
   const rows: PulseRow[] = (data ?? []).map((row) => ({
     region: row.region,

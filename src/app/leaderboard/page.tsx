@@ -3,30 +3,36 @@
 import { useEffect, useState } from "react";
 import { DistrictLeaderboard, type LeaderboardEntry } from "@/components/gamification/DistrictLeaderboard";
 
-const DEFAULT_DISTRICT = "Greater Accra";
+const FALLBACK_DISTRICT = "Greater Accra";
 
 // Verified-Profile-only feature; Guest Profiles are not ranked (pitch
-// Section 9). District selection defaults to Greater Accra until the
-// onboarding region picker exists — see api/leaderboard/route.ts's note.
+// Section 9). Defaults to the viewer's own onboarding region (see
+// onboarding/profile's region tap), falling back to Greater Accra for
+// anyone who hasn't onboarded on this device.
 export default function LeaderboardPage() {
+  const [district, setDistrict] = useState(FALLBACK_DISTRICT);
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/leaderboard?district=${encodeURIComponent(DEFAULT_DISTRICT)}`)
+    const profile = JSON.parse(window.localStorage.getItem("bipi_profile") ?? "{}");
+    setDistrict(profile.region ?? FALLBACK_DISTRICT);
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/leaderboard?district=${encodeURIComponent(district)}`)
       .then((res) => res.json())
       .then((data) => setEntries(data.entries ?? []))
       .catch(() => setEntries([]))
       .finally(() => setLoading(false));
-  }, []);
+  }, [district]);
 
   return (
     <main className="mx-auto max-w-xl p-6">
-      <DistrictLeaderboard district={DEFAULT_DISTRICT} entries={entries} />
+      <DistrictLeaderboard district={district} entries={entries} />
       {!loading && entries.length === 0 && (
-        <p className="mt-2 text-sm text-gray-400">
-          No Verified Profile learners in {DEFAULT_DISTRICT} yet.
-        </p>
+        <p className="mt-2 text-sm text-gray-400">No Verified Profile learners in {district} yet.</p>
       )}
     </main>
   );

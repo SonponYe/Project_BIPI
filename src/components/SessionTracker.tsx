@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { getOrCreateDeviceId } from "@/lib/identity/device-id";
 
-// Mounted once in the root layout. Opens a `sessions` row on first render
+// Mounted once in the root layout. Opens a `bipi_sessions` row on first render
 // and closes it when the tab is hidden or unloaded, via sendBeacon (which
 // still fires as the page is torn down, unlike a normal fetch).
 //

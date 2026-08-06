@@ -45,7 +45,8 @@ src/
   i18n/           English, Twi, Pidgin strings
   types/          Shared TypeScript types (module, user, pulse)
 supabase/
-  migrations/     users / sessions / responses / pulse tables (see docs/ARCHITECTURE.md)
+  migrations/     bipi_users / bipi_sessions / bipi_responses / bipi_pulse tables (see docs/ARCHITECTURE.md) —
+                  prefixed because this project's Supabase instance is shared with other apps
 scripts/          Content-generation script driving Claude API against the curriculum brief
 docs/             Architecture and curriculum-alignment reference notes
 ```
@@ -55,4 +56,4 @@ docs/             Architecture and curriculum-alignment reference notes
 Every user starts as an anonymous **Guest Profile** (a device UUID, no name/phone/email).
 Users may optionally upgrade to a **Verified Profile** for cross-device sync and
 leaderboard eligibility. Only aggregated, district-level data ever reaches the
-`pulse` table — see `supabase/migrations/0001_init.sql`.
+`bipi_pulse` table — see `supabase/migrations/0001_init.sql`.

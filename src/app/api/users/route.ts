@@ -5,7 +5,7 @@ import { createServiceRoleClient } from "@/lib/supabase/server";
 // Screen). Uses the service-role client for the same reason as
 // api/responses and api/sessions — guest users never hold a Supabase Auth
 // session, so the browser's anon-key client can't satisfy the device_id RLS
-// policy on `users`.
+// policy on `bipi_users`.
 export async function POST(request: NextRequest) {
   const body = await request.json();
 
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
 
   const supabase = createServiceRoleClient();
 
-  const { error } = await supabase.from("users").upsert({
+  const { error } = await supabase.from("bipi_users").upsert({
     device_id: body.deviceId,
     region: body.region ?? null,
     gender_type: body.demographicType ?? null,

@@ -10,10 +10,12 @@ import { computeProgress } from "@/lib/gamification/progress";
 // this into a single SQL aggregation, the way
 // supabase/migrations/0002_pulse_aggregation.sql does for BIPI Pulse.
 //
-// Note: onboarding doesn't currently capture `region` (the pitch's Ghana
-// map region picker isn't built yet — see docs/ARCHITECTURE.md), so this
-// will return an empty list until that's wired up and some users go
-// Verified.
+// Region comes from the flat 16-region picker in onboarding
+// (src/content/ghana-regions.ts) rather than the pitch's planned
+// interactive Ghana map (Design Lead's job, Section 14) — that still needs
+// the Ghana district GeoJSON, which this doesn't. Still returns an empty
+// list until someone actually upgrades to a Verified Profile, since Guest
+// Profiles aren't leaderboard-eligible.
 export async function GET(request: NextRequest) {
   const district = request.nextUrl.searchParams.get("district");
   if (!district) {
@@ -23,7 +25,7 @@ export async function GET(request: NextRequest) {
   const supabase = createServiceRoleClient();
 
   const { data: users, error: usersError } = await supabase
-    .from("users")
+    .from("bipi_users")
     .select("device_id")
     .eq("tier", "verified")
     .eq("region", district);
@@ -35,7 +37,7 @@ export async function GET(request: NextRequest) {
   const entries = await Promise.all(
     (users ?? []).map(async ({ device_id }) => {
       const { data } = await supabase
-        .from("responses")
+        .from("bipi_responses")
         .select("module_id, is_correct, dropped_off, created_at")
         .eq("device_id", device_id);
 

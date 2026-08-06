@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { refreshPulseForWeek } from "@/lib/pulse/aggregate";
 
 // Triggers (re)aggregation of one week's worth of consented responses into
-// the anonymised `pulse` table. Intended to run on a schedule (e.g. a
+// the anonymised `bipi_pulse` table. Intended to run on a schedule (e.g. a
 // Supabase cron job or Vercel cron), not on every request.
 export async function POST(request: NextRequest) {
   const { week } = await request.json();

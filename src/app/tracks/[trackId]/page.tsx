@@ -7,8 +7,14 @@ export function generateStaticParams() {
   return tracks.map((track) => ({ trackId: track.id }));
 }
 
-export default function TrackPage({ params }: { params: { trackId: TrackId } }) {
-  const track = tracks.find((t) => t.id === params.trackId);
+// Next.js 15 made route params a Promise, the same way it did `cookies()`.
+export default async function TrackPage({
+  params,
+}: {
+  params: Promise<{ trackId: TrackId }>;
+}) {
+  const { trackId } = await params;
+  const track = tracks.find((t) => t.id === trackId);
   if (!track) notFound();
 
   return (

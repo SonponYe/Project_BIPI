@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
 
   const supabase = createServiceRoleClient();
   const { data, error } = await supabase
-    .from("responses")
+    .from("bipi_responses")
     .select("module_id, is_correct, dropped_off, created_at")
     .eq("device_id", deviceId);
 

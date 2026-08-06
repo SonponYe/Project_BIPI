@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
   const supabase = createServiceRoleClient();
   await ensureGuestUser(supabase, body.deviceId);
 
-  const { error } = await supabase.from("responses").insert({
+  const { error } = await supabase.from("bipi_responses").insert({
     device_id: body.deviceId,
     module_id: body.moduleId,
     topic: body.topic,

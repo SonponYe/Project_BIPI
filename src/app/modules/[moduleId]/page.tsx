@@ -12,13 +12,19 @@ function loadModule(moduleId: string): Module | null {
   return JSON.parse(fs.readFileSync(filePath, "utf-8"));
 }
 
-export default function ModulePage({ params }: { params: { moduleId: string } }) {
-  const module_ = loadModule(params.moduleId);
+// Next.js 15 made route params a Promise, the same way it did `cookies()`.
+export default async function ModulePage({
+  params,
+}: {
+  params: Promise<{ moduleId: string }>;
+}) {
+  const { moduleId } = await params;
+  const module_ = loadModule(moduleId);
 
   if (!module_) {
     return (
       <main className="mx-auto max-w-xl p-6 text-center text-gray-500">
-        Module {params.moduleId} is on the roadmap but not authored yet.
+        Module {moduleId} is on the roadmap but not authored yet.
       </main>
     );
   }

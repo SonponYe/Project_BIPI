@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
   const supabase = createServiceRoleClient();
 
   const { error } = await supabase
-    .from("sessions")
+    .from("bipi_sessions")
     .update({ ended_at: new Date().toISOString() })
     .eq("session_id", body.sessionId);
 

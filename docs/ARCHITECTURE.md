@@ -12,15 +12,20 @@ Distilled from the full pitch (`Project_BIPI_Team_5ive9ine.pdf`,
 
 ## Database (`supabase/migrations/`)
 
-- `users` — one row per device_id (or verified account)
-- `sessions` — per app-open session, tracks online/offline connection type
-- `responses` — raw, consented interaction log (module, topic, format, correctness, timing)
-- `pulse` — aggregated, district-level output only; **no device_id column** — this
+All BIPI tables are prefixed `bipi_` because the Supabase project this runs
+against is shared with other, unrelated apps — the prefix keeps BIPI's schema
+collision-free (it already collided once with a pre-existing, unrelated
+`users` table during setup).
+
+- `bipi_users` — one row per device_id (or verified account)
+- `bipi_sessions` — per app-open session, tracks online/offline connection type
+- `bipi_responses` — raw, consented interaction log (module, topic, format, correctness, timing)
+- `bipi_pulse` — aggregated, district-level output only; **no device_id column** — this
   is the only table the partner dashboard (`src/app/partner/`) is allowed to read.
 
 `supabase/migrations/0002_pulse_aggregation.sql` defines the
-`aggregate_pulse_for_week` function that turns `responses` into `pulse` rows,
-called from `src/lib/pulse/aggregate.ts`.
+`bipi_aggregate_pulse_for_week` function that turns `bipi_responses` into
+`bipi_pulse` rows, called from `src/lib/pulse/aggregate.ts`.
 
 ## AI degradation path (Section 11)
 

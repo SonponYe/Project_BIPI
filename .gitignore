@@ -19,6 +19,7 @@ public/fallback-*.js
 # build
 dist/
 build/
+*.tsbuildinfo
 
 # misc
 .DS_Store

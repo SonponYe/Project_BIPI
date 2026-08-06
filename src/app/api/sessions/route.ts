@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
   await ensureGuestUser(supabase, body.deviceId);
 
   const { data, error } = await supabase
-    .from("sessions")
+    .from("bipi_sessions")
     .insert({ device_id: body.deviceId, connection_type: body.connectionType ?? "online" })
     .select()
     .single();
@@ -40,7 +40,7 @@ export async function PATCH(request: NextRequest) {
   const supabase = createServiceRoleClient();
 
   const { error } = await supabase
-    .from("sessions")
+    .from("bipi_sessions")
     .update({
       ended_at: new Date().toISOString(),
       modules_attempted: body.modulesAttempted,

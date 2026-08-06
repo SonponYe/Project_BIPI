@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css";
 import type { PulseRow } from "@/types/pulse";
 
 // District-level heat map (e.g. "which districts fail specific climate
-// knowledge areas most frequently"). Reads only the aggregated `pulse` table
+// knowledge areas most frequently"). Reads only the aggregated `bipi_pulse` table
 // — never per-user data (pitch Section 7).
 export function HeatMap({ rows, geoJson }: { rows: PulseRow[]; geoJson: GeoJSON.FeatureCollection }) {
   function colorForDistrict(region: string) {

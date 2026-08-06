@@ -6,6 +6,7 @@ import { XPBadge } from "@/components/gamification/XPBadge";
 import { StreakCounter } from "@/components/gamification/StreakCounter";
 import { getOrCreateDeviceId } from "@/lib/identity/device-id";
 import type { ProgressSummary } from "@/lib/gamification/progress";
+import { getDistrictBadge } from "@/lib/gamification/badges";
 import { tracks } from "@/content/tracks";
 
 const TOTAL_MODULES = 120;
@@ -14,9 +15,13 @@ const TOTAL_MODULES = 120;
 // /api/progress — real (if empty) computed state, not a hardcoded display.
 export default function ProfilePage() {
   const [summary, setSummary] = useState<ProgressSummary | null>(null);
+  const [region, setRegion] = useState<string | null>(null);
 
   useEffect(() => {
     const deviceId = getOrCreateDeviceId();
+    const profile = JSON.parse(window.localStorage.getItem("bipi_profile") ?? "{}");
+    setRegion(profile.region ?? null);
+
     fetch(`/api/progress?deviceId=${deviceId}`)
       .then((res) => res.json())
       .then(setSummary)
@@ -24,13 +29,14 @@ export default function ProfilePage() {
   }, []);
 
   const completed = summary?.modulesCompleted ?? 0;
+  const badgeName = getDistrictBadge(region, completed) ?? undefined;
 
   return (
     <main className="mx-auto flex max-w-xl flex-col gap-4 p-6">
       <h1 className="text-xl font-semibold text-pulse-700">Your progress</h1>
       <ProgressBar completed={completed} total={TOTAL_MODULES} />
       <div className="flex items-center gap-4">
-        <XPBadge xp={summary?.xp ?? 0} />
+        <XPBadge xp={summary?.xp ?? 0} badgeName={badgeName} />
         <StreakCounter days={summary?.streakDays ?? 0} />
       </div>
       {summary === null && <p className="text-sm text-gray-400">Loading…</p>}

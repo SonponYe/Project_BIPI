@@ -1,23 +1,33 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LanguagePicker } from "@/components/onboarding/LanguagePicker";
-import { getOrCreateDeviceId } from "@/lib/identity/device-id";
-import type { Language } from "@/types/user";
+import { CommunityFeed } from "@/components/dashboard/CommunityFeed";
+import { DailyCheckCard } from "@/components/dashboard/DailyCheckCard";
 
-// Stage 1: First Open. No login, no registration, no email field.
-export default function FirstOpenPage() {
+// The home route is now the dashboard, not Stage 1 of onboarding — a device
+// without a saved profile gets redirected into onboarding instead. This
+// check has to run client-side (localStorage), so the page renders nothing
+// until it resolves, to avoid a flash of dashboard content for new devices.
+export default function DashboardPage() {
   const router = useRouter();
+  const [ready, setReady] = useState(false);
 
-  function handleLanguageSelect(language: Language) {
-    getOrCreateDeviceId();
-    window.localStorage.setItem("bipi_language", language);
-    router.push("/onboarding/profile");
-  }
+  useEffect(() => {
+    const profile = window.localStorage.getItem("bipi_profile");
+    if (!profile) {
+      router.replace("/onboarding");
+      return;
+    }
+    setReady(true);
+  }, [router]);
+
+  if (!ready) return null;
 
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <LanguagePicker onSelect={handleLanguageSelect} />
+    <main className="mx-auto flex max-w-xl flex-col gap-6 p-6">
+      <CommunityFeed />
+      <DailyCheckCard />
     </main>
   );
 }

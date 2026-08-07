@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { GHANA_REGIONS, type GhanaRegion } from "@/content/ghana-regions";
 import type { CarePriority, ContentPreference, DemographicType } from "@/types/user";
 
-// Stage 2: three taps, no typing, no keyboard, plus a region pick. Sets up
-// personalisation for every module that follows (pitch Section 8), and
-// region is what BIPI Pulse and the district leaderboard key on.
+// Three taps, no typing, no keyboard — part of onboarding screen 1
+// (language + these taps + consent, all one page). Region is its own
+// screen 2 (app/onboarding/region/page.tsx), not bundled in here, per
+// product direction: keep screen 1 to "the huge parts," region gets its
+// own screen.
 export function ProfileTaps({
   onComplete,
 }: {
@@ -14,13 +15,11 @@ export function ProfileTaps({
     demographicType: DemographicType;
     carePriorities: CarePriority[];
     contentPreference: ContentPreference;
-    region: GhanaRegion;
   }) => void;
 }) {
   const [step, setStep] = useState(0);
   const [demographicType, setDemographicType] = useState<DemographicType | null>(null);
   const [carePriorities, setCarePriorities] = useState<CarePriority[]>([]);
-  const [contentPreference, setContentPreference] = useState<ContentPreference | null>(null);
 
   if (step === 0) {
     const options: DemographicType[] = ["youth", "woman", "person-with-disability", "other"];
@@ -58,37 +57,23 @@ export function ProfileTaps({
     );
   }
 
-  if (step === 2) {
-    const options: ContentPreference[] = ["read", "listen", "watch"];
-    return (
-      <TapStep
-        heading="I prefer to..."
-        options={options}
-        onPick={(value) => {
-          setContentPreference(value);
-          setStep(3);
-        }}
-      />
-    );
-  }
-
+  const options: ContentPreference[] = ["read", "listen", "watch"];
   return (
     <TapStep
-      heading="Which region are you in?"
-      options={GHANA_REGIONS as unknown as GhanaRegion[]}
+      heading="I prefer to..."
+      options={options}
       onPick={(value) =>
         onComplete({
           demographicType: demographicType!,
           carePriorities,
-          contentPreference: contentPreference!,
-          region: value,
+          contentPreference: value,
         })
       }
     />
   );
 }
 
-function TapStep<T extends string>({
+export function TapStep<T extends string>({
   heading,
   options,
   onPick,
@@ -98,7 +83,7 @@ function TapStep<T extends string>({
   onContinue,
 }: {
   heading: string;
-  options: T[];
+  options: readonly T[];
   onPick?: (value: T) => void;
   multi?: boolean;
   selected?: T[];

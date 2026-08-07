@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ProgressBar } from "@/components/gamification/ProgressBar";
+import { ProgressRing } from "@/components/ProgressRing";
 import { XPBadge } from "@/components/gamification/XPBadge";
 import { StreakCounter } from "@/components/gamification/StreakCounter";
+import { ShareBadgeButton } from "@/components/ShareBadgeButton";
 import { getOrCreateDeviceId } from "@/lib/identity/device-id";
 import type { ProgressSummary } from "@/lib/gamification/progress";
 import { getDistrictBadge } from "@/lib/gamification/badges";
@@ -30,17 +31,31 @@ export default function ProfilePage() {
   }, []);
 
   const completed = summary?.modulesCompleted ?? 0;
-  const badgeName = getDistrictBadge(region, completed) ?? undefined;
+  const badgeName = getDistrictBadge(region, completed);
 
   return (
-    <main className="mx-auto flex max-w-xl flex-col gap-4 p-6">
-      <h1 className="text-xl font-semibold text-pulse-700">Your progress</h1>
-      <ProgressBar completed={completed} total={TOTAL_MODULES} />
-      <div className="flex items-center gap-4">
-        <XPBadge xp={summary?.xp ?? 0} badgeName={badgeName} />
-        <StreakCounter days={summary?.streakDays ?? 0} />
-      </div>
+    <main className="mx-auto flex max-w-xl flex-col gap-6 p-6">
+      <h1 className="text-xl font-bold text-pulse-800">Your progress</h1>
+
+      <section className="flex items-center gap-5 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+        <ProgressRing
+          percent={(completed / TOTAL_MODULES) * 100}
+          label={`${completed}`}
+          sublabel={`of ${TOTAL_MODULES}`}
+        />
+        <div className="flex flex-1 flex-col gap-2">
+          <div className="flex flex-wrap items-center gap-3">
+            <XPBadge xp={summary?.xp ?? 0} badgeName={badgeName ?? undefined} />
+            <StreakCounter days={summary?.streakDays ?? 0} />
+          </div>
+          {badgeName && <ShareBadgeButton badgeName={badgeName} />}
+        </div>
+      </section>
+
       {summary === null && <p className="text-sm text-gray-400">Loading…</p>}
+
+      <PushSubscribeButton />
+
       <p className="text-xs text-gray-400">
         Tracks {tracks.length}, {TOTAL_MODULES} modules total across the GreenRes curriculum.
       </p>

@@ -12,14 +12,14 @@ const LANGUAGES: { code: Language; label: string }[] = [
 // seconds, zero personal information collected.
 export function LanguagePicker({ onSelect }: { onSelect: (language: Language) => void }) {
   return (
-    <div className="flex flex-col items-center gap-4 p-8">
-      <h1 className="text-xl font-semibold text-pulse-700">How do you prefer to use the app?</h1>
+    <div className="flex flex-col items-center gap-4 p-6">
+      <h2 className="text-lg font-semibold text-pulse-700">How do you prefer to use the app?</h2>
       <div className="flex gap-3">
         {LANGUAGES.map(({ code, label }) => (
           <button
             key={code}
             onClick={() => onSelect(code)}
-            className="rounded-lg bg-pulse-500 px-5 py-3 text-white hover:bg-pulse-600"
+            className="rounded-lg bg-pulse-500 px-5 py-3 font-medium text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-pulse-600 hover:shadow"
           >
             {label}
           </button>

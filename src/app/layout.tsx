@@ -3,6 +3,7 @@ import "./globals.css";
 import { SessionTracker } from "@/components/SessionTracker";
 import { InstallPrompt } from "@/components/InstallPrompt";
 import { NavHeader } from "@/components/NavHeader";
+import { BottomTabBar } from "@/components/BottomTabBar";
 
 export const metadata: Metadata = {
   title: "BIPI — Ghana's Ecological Pulse",
@@ -19,10 +20,11 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-white text-gray-900 antialiased">
+      <body className="min-h-screen bg-gray-50 pb-20 text-gray-900 antialiased">
         <SessionTracker />
         <NavHeader />
         {children}
+        <BottomTabBar />
         <InstallPrompt />
       </body>
     </html>

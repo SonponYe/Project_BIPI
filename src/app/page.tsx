@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CommunityFeed } from "@/components/dashboard/CommunityFeed";
 import { DailyCheckCard } from "@/components/dashboard/DailyCheckCard";
+import { BadgeProgress } from "@/components/dashboard/BadgeProgress";
 
 // The home route is now the dashboard, not Stage 1 of onboarding — a device
 // without a saved profile gets redirected into onboarding instead. This
@@ -26,6 +27,11 @@ export default function DashboardPage() {
 
   return (
     <main className="mx-auto flex max-w-xl flex-col gap-6 p-6">
+      <header>
+        <h1 className="text-2xl font-bold text-pulse-800">BIPI</h1>
+        <p className="text-sm text-gray-500">Know the signs. Act before the crisis.</p>
+      </header>
+      <BadgeProgress />
       <CommunityFeed />
       <DailyCheckCard />
     </main>

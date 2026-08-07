@@ -21,11 +21,17 @@ export function DailyCheckCard() {
   return (
     <button
       onClick={handleClick}
-      className="flex flex-col items-start gap-1 rounded-xl bg-pulse-500 p-5 text-left text-white hover:bg-pulse-600"
+      className="group relative flex flex-col items-start gap-1 overflow-hidden rounded-2xl bg-gradient-to-br from-pulse-500 to-pulse-700 p-6 text-left text-white shadow-lg shadow-pulse-700/20 transition hover:-translate-y-0.5 hover:shadow-xl"
     >
-      <span className="text-xs uppercase tracking-wide text-pulse-50">Daily check</span>
-      <span className="text-lg font-semibold">Take your Daily BP Check</span>
-      <span className="text-sm text-pulse-50">One quick module, picked for you.</span>
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-6 -top-6 h-28 w-28 rounded-full bg-white/10 transition group-hover:scale-110"
+      />
+      <span className="text-xs font-semibold uppercase tracking-wider text-pulse-100">
+        Daily check
+      </span>
+      <span className="text-xl font-bold">Take your Daily BP Check</span>
+      <span className="text-sm text-pulse-50">One quick module, picked for you →</span>
     </button>
   );
 }

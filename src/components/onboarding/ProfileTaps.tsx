@@ -91,8 +91,8 @@ export function TapStep<T extends string>({
   onContinue?: () => void;
 }) {
   return (
-    <div className="flex flex-col items-center gap-4 p-8">
-      <h2 className="text-lg font-medium text-pulse-700">{heading}</h2>
+    <div className="flex flex-col items-center gap-4 p-6">
+      <h2 className="text-lg font-semibold text-pulse-700">{heading}</h2>
       <div className="flex flex-wrap justify-center gap-3">
         {options.map((option) => {
           const isSelected = selected?.includes(option);
@@ -100,8 +100,11 @@ export function TapStep<T extends string>({
             <button
               key={option}
               onClick={() => (multi ? onToggle?.(option) : onPick?.(option))}
-              className={`rounded-lg border px-4 py-3 capitalize ${
-                isSelected ? "border-pulse-600 bg-pulse-50" : "border-gray-300"
+              aria-pressed={multi ? isSelected : undefined}
+              className={`rounded-lg border px-4 py-3 capitalize shadow-sm transition hover:-translate-y-0.5 ${
+                isSelected
+                  ? "border-pulse-600 bg-pulse-50 text-pulse-700"
+                  : "border-gray-200 bg-white hover:border-pulse-300"
               }`}
             >
               {option.replace(/-/g, " ")}
@@ -110,7 +113,10 @@ export function TapStep<T extends string>({
         })}
       </div>
       {multi && (
-        <button onClick={onContinue} className="mt-2 text-pulse-600 underline">
+        <button
+          onClick={onContinue}
+          className="mt-2 rounded-lg bg-pulse-600 px-5 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-pulse-700"
+        >
           Continue
         </button>
       )}

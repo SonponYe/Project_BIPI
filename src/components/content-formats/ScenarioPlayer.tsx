@@ -32,7 +32,13 @@ export function ScenarioPlayer({
 
   return (
     <div className="flex flex-col gap-4 p-6">
-      <div className="text-sm text-gray-500">{secondsLeft}s remaining</div>
+      {/* Visual-only countdown: a screen reader announcing every second is
+          an established anti-pattern, so this is aria-hidden with a single
+          static announcement of the time limit instead. */}
+      <div aria-hidden="true" className="text-sm text-gray-500">
+        {secondsLeft}s remaining
+      </div>
+      <span className="sr-only">You have {timeLimitSeconds} seconds to decide.</span>
       <p className="text-lg">{prompt}</p>
       {!resolved ? (
         <div className="flex flex-col gap-2">
@@ -47,7 +53,11 @@ export function ScenarioPlayer({
           ))}
         </div>
       ) : (
-        <p className={resolved.isCorrect ? "text-pulse-700" : "text-red-700"}>
+        <p
+          role="status"
+          aria-live="polite"
+          className={resolved.isCorrect ? "text-pulse-700" : "text-red-700"}
+        >
           {resolved.consequence}
         </p>
       )}

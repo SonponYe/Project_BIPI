@@ -6,3 +6,59 @@ html,
 body {
   height: 100%;
 }
+
+/* High-contrast mode, toggled via components/AccessibilityToggle.tsx
+   (persisted in localStorage, applied as `data-contrast` on <html>).
+   Targets the specific gray text/border utilities actually used across
+   this codebase rather than a blanket CSS filter — a filter bumps visual
+   contrast without necessarily fixing real WCAG contrast-ratio failures. */
+[data-contrast="high"] {
+  background: #ffffff;
+  color: #000000;
+}
+
+[data-contrast="high"] .text-gray-400,
+[data-contrast="high"] .text-gray-500,
+[data-contrast="high"] .text-gray-600 {
+  color: #1a1a1a !important;
+}
+
+[data-contrast="high"] .border-gray-200,
+[data-contrast="high"] .border-gray-300 {
+  border-color: #000000 !important;
+  border-width: 2px !important;
+}
+
+[data-contrast="high"] a:focus-visible,
+[data-contrast="high"] button:focus-visible,
+[data-contrast="high"] input:focus-visible {
+  outline: 3px solid #000000 !important;
+  outline-offset: 2px;
+}
+
+/* Feed items slide up into place (components/dashboard/CommunityFeed.tsx),
+   staggered via the --delay custom property each item sets inline.
+   Respects prefers-reduced-motion — motion is decorative here, not
+   load-bearing, so it's the first thing to drop for anyone who's opted out
+   of animation at the OS level. */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out both;
+  animation-delay: var(--delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up {
+    animation: none;
+  }
+}

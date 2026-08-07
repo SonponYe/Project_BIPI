@@ -8,6 +8,7 @@ import { AudioStoryPlayer } from "@/components/content-formats/AudioStoryPlayer"
 import { MiniGame } from "@/components/content-formats/MiniGame";
 import { ReflectionJournal } from "@/components/content-formats/ReflectionJournal";
 import { getOrCreateDeviceId } from "@/lib/identity/device-id";
+import { HAPTIC, vibrate } from "@/lib/accessibility/haptics";
 import type { Module } from "@/types/module";
 import type { Language } from "@/types/user";
 
@@ -48,6 +49,7 @@ export function ModulePlayer({ module: mod }: { module: Module }) {
     // Formats without a right/wrong answer (audio story, news clip,
     // reflection journal) still get an acknowledgement — "you get your
     // score, yay" applies loosely to all of them, not just scored ones.
+    vibrate(isCorrect === true ? HAPTIC.correct : isCorrect === false ? HAPTIC.incorrect : HAPTIC.complete);
     setResult(
       isCorrect === true
         ? "Nice work — you got it right!"
@@ -97,7 +99,11 @@ export function ModulePlayer({ module: mod }: { module: Module }) {
       )}
 
       {result && (
-        <div className="flex flex-col items-start gap-2 rounded-lg bg-pulse-50 p-4">
+        <div
+          role="status"
+          aria-live="polite"
+          className="flex flex-col items-start gap-2 rounded-lg bg-pulse-50 p-4"
+        >
           <p className="font-medium text-pulse-700">{result}</p>
           <Link href="/" className="text-sm text-pulse-600 underline">
             Back to dashboard

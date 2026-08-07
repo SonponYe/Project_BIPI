@@ -17,13 +17,13 @@ distilled into [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) and
 | Layer | Technology |
 |---|---|
 | Frontend | Next.js 15 (App Router), TypeScript, Tailwind CSS |
-| Offline / installability | Service worker via `next-pwa` |
+| Offline / installability | Custom service worker (`worker/index.js`) via `next-pwa`'s InjectManifest mode |
 | Backend & data | Supabase (Postgres, Auth, Storage) |
 | AI content & localisation | Claude API (`@anthropic-ai/sdk`), offline fallback |
-| Maps | Leaflet.js + Ghana district GeoJSON (Mapbox GL JS swappable) |
+| Maps | Leaflet.js + Ghana region GeoJSON (Mapbox GL JS swappable) |
 | Text-to-speech | Web Speech API (browser-native) |
 | SMS/USSD fallback | Africa's Talking API |
-| Push notifications | Web Push API |
+| Push notifications | Web Push API, self-issued VAPID keys (`src/lib/push/`) |
 
 ## Getting started
 
@@ -40,13 +40,15 @@ npm run dev
 src/
   app/            Routes (onboarding, learning tracks, journal, partner dashboard, API)
   components/     UI grouped by onboarding / content-formats / gamification / dashboard
-  lib/            Supabase clients, device identity, AI, TTS, SMS fallback, Pulse aggregation
+  lib/            Supabase clients, device identity, AI, TTS, SMS fallback, Web Push, Pulse aggregation
   content/        The five learning tracks as structured module data, plus Ghana GeoJSON
   i18n/           English, Twi, Pidgin strings
   types/          Shared TypeScript types (module, user, pulse)
+worker/           Custom service worker source (offline caching + push notifications) — see docs/ARCHITECTURE.md
 supabase/
-  migrations/     bipi_users / bipi_sessions / bipi_responses / bipi_pulse tables (see docs/ARCHITECTURE.md) —
-                  prefixed because this project's Supabase instance is shared with other apps
+  migrations/     bipi_users / bipi_sessions / bipi_responses / bipi_pulse / bipi_push_subscriptions
+                  tables (see docs/ARCHITECTURE.md) — prefixed because this project's Supabase
+                  instance is shared with other apps
 scripts/          Content-generation script driving Claude API against the curriculum brief
 docs/             Architecture and curriculum-alignment reference notes
 ```

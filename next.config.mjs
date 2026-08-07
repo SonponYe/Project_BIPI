@@ -3,25 +3,14 @@ import nextPWA from "next-pwa";
 const withPWA = nextPWA({
   dest: "public",
   register: true,
-  skipWaiting: true,
+  // Custom worker source (offline caching + offline.html fallback +
+  // web push), bundled via Workbox InjectManifest instead of next-pwa's
+  // default GenerateSW — see worker/index.js for why. `skipWaiting`,
+  // `runtimeCaching`, and `fallbacks` below don't apply in this mode
+  // (they're GenerateSW-only options); the worker source handles all of
+  // that itself now.
+  swSrc: "worker/index.js",
   disable: process.env.NODE_ENV === "development",
-  fallbacks: {
-    document: "/offline.html",
-  },
-  // Modules, audio, and quiz progress must survive total connectivity loss —
-  // this is the core offline-first requirement, not an optimization.
-  runtimeCaching: [
-    {
-      urlPattern: /^https:\/\/.*\.(mp3|mp4|wav|ogg)$/,
-      handler: "CacheFirst",
-      options: { cacheName: "bipi-media" },
-    },
-    {
-      urlPattern: /\/api\/pulse/,
-      handler: "NetworkFirst",
-      options: { cacheName: "bipi-pulse-api" },
-    },
-  ],
 });
 
 /** @type {import('next').NextConfig} */

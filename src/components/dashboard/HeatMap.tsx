@@ -4,11 +4,16 @@ import { MapContainer, GeoJSON, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import type { PulseRow } from "@/types/pulse";
 
-// District-level heat map (e.g. "which districts fail specific climate
-// knowledge areas most frequently"). Reads only the aggregated `bipi_pulse` table
-// — never per-user data (pitch Section 7).
+// Region-level heat map (e.g. "which regions fail specific climate
+// knowledge areas most frequently"). Reads only the aggregated `bipi_pulse`
+// table — never per-user data (pitch Section 7).
+//
+// geoJson comes from src/content/geo/ghana-regions.geojson (geoBoundaries,
+// see that folder's README for licensing) — its shapeName property carries
+// a " Region" suffix that bipi_pulse.region / GHANA_REGIONS don't.
 export function HeatMap({ rows, geoJson }: { rows: PulseRow[]; geoJson: GeoJSON.FeatureCollection }) {
-  function colorForDistrict(region: string) {
+  function colorForRegion(shapeName: string | undefined) {
+    const region = shapeName?.replace(/\s+Region$/, "");
     const row = rows.find((r) => r.region === region);
     if (!row) return "#e5e7eb";
     // Higher fail rate → darker shade.
@@ -23,7 +28,7 @@ export function HeatMap({ rows, geoJson }: { rows: PulseRow[]; geoJson: GeoJSON.
       <GeoJSON
         data={geoJson}
         style={(feature) => ({
-          fillColor: colorForDistrict(feature?.properties?.district),
+          fillColor: colorForRegion(feature?.properties?.shapeName),
           fillOpacity: 0.7,
           color: "#0f766e",
           weight: 1,

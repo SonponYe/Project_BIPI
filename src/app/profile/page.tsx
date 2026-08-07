@@ -7,6 +7,7 @@ import { StreakCounter } from "@/components/gamification/StreakCounter";
 import { getOrCreateDeviceId } from "@/lib/identity/device-id";
 import type { ProgressSummary } from "@/lib/gamification/progress";
 import { getDistrictBadge } from "@/lib/gamification/badges";
+import { PushSubscribeButton } from "@/components/PushSubscribeButton";
 import { tracks } from "@/content/tracks";
 
 const TOTAL_MODULES = 120;

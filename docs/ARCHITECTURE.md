@@ -1,3 +1,5 @@
+
+
 # Architecture reference
 
 Distilled from the full pitch (`Project_BIPI_Team_5ive9ine.pdf`,
@@ -22,10 +24,20 @@ collision-free (it already collided once with a pre-existing, unrelated
 - `bipi_responses` — raw, consented interaction log (module, topic, format, correctness, timing)
 - `bipi_pulse` — aggregated, district-level output only; **no device_id column** — this
   is the only table the partner dashboard (`src/app/partner/`) is allowed to read.
+- `bipi_push_subscriptions` — one row per browser Web Push subscription, keyed on `endpoint`
 
 `supabase/migrations/0002_pulse_aggregation.sql` defines the
 `bipi_aggregate_pulse_for_week` function that turns `bipi_responses` into
 `bipi_pulse` rows, called from `src/lib/pulse/aggregate.ts`.
+
+All API routes that write on a guest's behalf (`api/users`, `api/sessions`,
+`api/responses`, `api/push/subscribe`) use the service-role client
+(`createServiceRoleClient()` in `src/lib/supabase/server.ts`), not the
+cookie-based one — guest users never hold a Supabase Auth session (onboarding
+is explicitly zero-login), so they have no JWT to satisfy the device_id RLS
+policies. The route handler itself is the trust boundary instead. The
+cookie-based client stays reserved for the partner dashboard, which *does*
+authenticate via Supabase Auth (`src/app/partner/login/`).
 
 ## AI degradation path (Section 11)
 
@@ -41,10 +53,37 @@ not a runtime dependency of the core learning loop:
 
 ## Offline-first (Section 3, 10)
 
-`next-pwa` (configured in `next.config.mjs`) caches all module content, audio,
-and progress via a service worker so the app works with zero connectivity
-after first load. `src/lib/sms/africasTalking.ts` extends reach further, to
+`next-pwa` builds the service worker from a **custom source file**,
+`worker/index.js`, in Workbox's InjectManifest mode (`swSrc` in
+`next.config.mjs`) rather than its default GenerateSW mode — GenerateSW has
+no hook for the custom `push`/`notificationclick` listeners Web Push needs,
+so `worker/index.js` hand-implements what `next.config.mjs` used to
+configure declaratively: precaching all module content/audio/build output,
+a cache-first route for media files, a network-first route for
+`/api/pulse`, and an `/offline.html` fallback for navigation when there's no
+cached page. `src/lib/sms/africasTalking.ts` extends reach further, to
 basic-phone users with no data connection at all, via SMS/USSD.
+
+## Web Push (Section 10)
+
+VAPID keys are self-generated (`npx web-push generate-vapid-keys` —
+no external push-service account needed) and live in `.env.local` as
+`NEXT_PUBLIC_VAPID_PUBLIC_KEY` / `VAPID_PRIVATE_KEY`. The flow:
+
+1. `src/components/PushSubscribeButton.tsx` (wired into the profile page)
+   requests notification permission and subscribes via
+   `src/lib/push/subscribe.ts`, which registers the subscription against
+   `POST /api/push/subscribe`.
+2. `worker/index.js`'s `push` event listener shows the notification;
+   `notificationclick` focuses an existing tab or opens one.
+3. `src/lib/push/send.ts` (used by `POST /api/push/send`) sends to every
+   subscription on file for a device, and prunes subscriptions the push
+   service reports as gone (404/410).
+
+Nothing schedules *when* to send a streak/badge/reminder notification yet —
+`api/push/send` is a manual trigger only. A real scheduler (e.g. a Vercel
+Cron job that finds devices due for a reminder and calls
+`sendPushToDevice`) isn't built.
 
 ## Five content formats → components
 

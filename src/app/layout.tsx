@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SessionTracker } from "@/components/SessionTracker";
+import { InstallPrompt } from "@/components/InstallPrompt";
 
 export const metadata: Metadata = {
   title: "BIPI — Ghana's Ecological Pulse",
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <SessionTracker />
         {children}
+        <InstallPrompt />
       </body>
     </html>
   );

@@ -10,6 +10,7 @@ next-env.d.ts
 public/sw.js
 public/workbox-*.js
 public/fallback-*.js
+public/worker-*.js
 
 # env
 .env
@@ -29,3 +30,6 @@ npm-debug.log*
 # editor
 .vscode/*
 !.vscode/extensions.json
+
+.vercel
+.env*

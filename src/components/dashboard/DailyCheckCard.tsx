@@ -1,27 +1,35 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AVAILABLE_MODULE_IDS } from "@/content/modules";
 
 // "Take your Daily BP Check": the one thing on the dashboard that isn't
-// browsing. No module picker — one tap auto-selects a module, currently at
-// random from whatever's authored. The product direction is for this to
-// eventually pick based on what's happening in the user's own community
-// (the feed above, tagged by region) rather than pure chance — that needs
-// the modules/feed data layer to carry region tags, which doesn't exist
-// yet, so random is the honest placeholder for "for now."
+// browsing. No module picker — one tap asks the server for a random
+// authored module (GET /api/modules/random, picked from the real
+// bipi_modules table) and jumps straight there. The product direction is
+// for this to eventually pick based on what's happening in the user's own
+// community rather than pure chance — that needs region-tagged content,
+// which doesn't exist yet, so random is the honest placeholder for "for now."
 export function DailyCheckCard() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-  function handleClick() {
-    const randomId = AVAILABLE_MODULE_IDS[Math.floor(Math.random() * AVAILABLE_MODULE_IDS.length)];
-    router.push(`/modules/${randomId}`);
+  async function handleClick() {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/modules/random");
+      const data = await res.json();
+      if (data.id) router.push(`/modules/${data.id}`);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <button
       onClick={handleClick}
-      className="group relative flex flex-col items-start gap-1 overflow-hidden rounded-3xl bg-gradient-to-br from-pulse-500 to-pulse-700 p-6 text-left text-white shadow-lg shadow-pulse-700/25 transition hover:-translate-y-0.5 hover:shadow-xl"
+      disabled={loading}
+      className="group relative flex flex-col items-start gap-1 overflow-hidden rounded-3xl bg-gradient-to-br from-pulse-500 to-pulse-700 p-6 text-left text-white shadow-lg shadow-pulse-700/25 transition hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-80"
     >
       <span
         aria-hidden="true"
@@ -31,7 +39,9 @@ export function DailyCheckCard() {
         Daily check
       </span>
       <span className="text-xl font-bold">Take your Daily BP Check</span>
-      <span className="text-sm text-pulse-50">One quick lesson, picked for you →</span>
+      <span className="text-sm text-pulse-50">
+        {loading ? "Picking one for you…" : "One quick lesson, picked for you →"}
+      </span>
     </button>
   );
 }

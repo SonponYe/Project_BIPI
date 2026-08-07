@@ -8,7 +8,7 @@ export default async function ModulePage({
   params: Promise<{ moduleId: string }>;
 }) {
   const { moduleId } = await params;
-  const module_ = loadModule(moduleId);
+  const module_ = await loadModule(moduleId);
 
   if (!module_) {
     return (

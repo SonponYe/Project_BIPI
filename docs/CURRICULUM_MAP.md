@@ -27,3 +27,9 @@ fulfilment, not an added feature — see pitch Section 7.
 3. Review for accuracy and local relevance, then save as
    `src/content/modules/module-{id}.json` conforming to the `Module` type in
    `src/types/module.ts`.
+4. Run `npm run modules:sync` to push it into the `bipi_modules` table — the
+   app reads from the database, not the file, so this step isn't optional
+   (see docs/ARCHITECTURE.md).
+
+53 of 120 modules are authored as of this writing, across all five tracks,
+including the full disability track (50–57).

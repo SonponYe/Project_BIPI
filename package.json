@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "content:generate": "tsx scripts/generate-module-content.ts",
+    "modules:sync": "tsx scripts/sync-modules-to-db.ts",
     "supabase:migrate": "supabase db push"
   },
   "dependencies": {

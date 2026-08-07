@@ -25,6 +25,22 @@ collision-free (it already collided once with a pre-existing, unrelated
 - `bipi_pulse` — aggregated, district-level output only; **no device_id column** — this
   is the only table the partner dashboard (`src/app/partner/`) is allowed to read.
 - `bipi_push_subscriptions` — one row per browser Web Push subscription, keyed on `endpoint`
+- `bipi_modules` — learning content (questions, choices, video links, transcripts).
+  Publicly readable (RLS `using (true)`) — it's the only `bipi_` table with no user data in it.
+
+### Module content: authored as files, served from the database
+
+`src/content/modules/module-{id}.json` is where content is written and
+reviewed (git-diffable). It is **not** what the deployed app reads —
+`npm run modules:sync` (`scripts/sync-modules-to-db.ts`) pushes those files
+into `bipi_modules`, and `src/lib/content/load-module.ts` /
+`src/app/api/modules/random/route.ts` read from there at request time. This
+means content can be corrected or added without a redeploy, and the Daily
+BP Check's "random module" is a real server-side random pick over the
+`bipi_modules` table, not a client picking from a hardcoded list baked into
+the JS bundle (the original design — moved off after user feedback).
+Forgetting to re-run the sync script after editing a JSON file is the one
+sharp edge here: the file and the database drift apart until you do.
 
 `supabase/migrations/0002_pulse_aggregation.sql` defines the
 `bipi_aggregate_pulse_for_week` function that turns `bipi_responses` into

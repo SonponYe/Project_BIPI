@@ -36,15 +36,15 @@ body {
   outline-offset: 2px;
 }
 
-/* Feed items slide up into place (components/dashboard/CommunityFeed.tsx),
-   staggered via the --delay custom property each item sets inline.
-   Respects prefers-reduced-motion — motion is decorative here, not
-   load-bearing, so it's the first thing to drop for anyone who's opted out
-   of animation at the OS level. */
-@keyframes slide-up {
+/* Each rotating headline fades/slides in as it becomes current
+   (components/dashboard/CommunityFeed.tsx — triggered by React remounting
+   the element on `key={item.id}` change). The component itself already
+   skips applying this class under prefers-reduced-motion, and separately
+   stops auto-rotating, so there's no reduced-motion query needed here. */
+@keyframes fade-slide {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -52,13 +52,6 @@ body {
   }
 }
 
-.animate-slide-up {
-  animation: slide-up 0.4s ease-out both;
-  animation-delay: var(--delay, 0ms);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-slide-up {
-    animation: none;
-  }
+.animate-fade-slide {
+  animation: fade-slide 0.35s ease-out both;
 }

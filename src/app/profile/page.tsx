@@ -9,7 +9,6 @@ import { getOrCreateDeviceId } from "@/lib/identity/device-id";
 import type { ProgressSummary } from "@/lib/gamification/progress";
 import { getDistrictBadge } from "@/lib/gamification/badges";
 import { PushSubscribeButton } from "@/components/PushSubscribeButton";
-import { tracks } from "@/content/tracks";
 
 const TOTAL_MODULES = 120;
 
@@ -55,10 +54,6 @@ export default function ProfilePage() {
       {summary === null && <p className="text-sm text-gray-400">Loading…</p>}
 
       <PushSubscribeButton />
-
-      <p className="text-xs text-gray-400">
-        Tracks {tracks.length}, {TOTAL_MODULES} modules total across the GreenRes curriculum.
-      </p>
     </main>
   );
 }

@@ -34,7 +34,7 @@ export function BadgeProgress() {
       <ProgressRing
         percent={badgeName ? 100 : percent}
         label={badgeName ? "🏅" : `${completed}/${BADGE_UNLOCK_THRESHOLD}`}
-        sublabel={badgeName ? undefined : "modules"}
+        sublabel={badgeName ? undefined : "check-ins"}
       />
       <div className="flex flex-1 flex-col gap-2">
         {badgeName ? (
@@ -47,7 +47,7 @@ export function BadgeProgress() {
           <>
             <p className="font-semibold text-pulse-800">On your way to a badge</p>
             <p className="text-sm text-gray-500">
-              {Math.max(0, BADGE_UNLOCK_THRESHOLD - completed)} more module
+              {Math.max(0, BADGE_UNLOCK_THRESHOLD - completed)} more check-in
               {BADGE_UNLOCK_THRESHOLD - completed === 1 ? "" : "s"} to unlock one.
             </p>
           </>

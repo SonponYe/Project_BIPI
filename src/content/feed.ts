@@ -42,4 +42,22 @@ export const FEED_ITEMS: FeedItem[] = [
     sourceLabel: "UNESCO Courier",
     sourceUrl: "https://courier.unesco.org/en/articles/ghanas-coastline-swallowed-sea",
   },
+  {
+    id: "farming-under-climate-stress",
+    headline: "Farming under growing climate stress",
+    summary:
+      "Erratic rainfall and shifting growing seasons are eroding yields for the roughly 45% of Ghana's workforce in agriculture, most on small, rain-fed farms.",
+    dateLabel: "Ongoing",
+    sourceLabel: "MyJoyOnline",
+    sourceUrl: "https://www.myjoyonline.com/climate-evidence-sustaining-ghanas-farming-glory-under-climate-stress/",
+  },
+  {
+    id: "rising-temperatures-ghana",
+    headline: "Ghana has warmed by about 1°C over six decades",
+    summary:
+      "Rising heat and unpredictable rain are already reshaping farming, water access, and health risk across the country — and the pace is accelerating.",
+    dateLabel: "Ongoing",
+    sourceLabel: "Climate Reality Project",
+    sourceUrl: "https://www.climaterealityproject.org/blog/how-climate-crisis-impacting-ghana",
+  },
 ];

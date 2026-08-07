@@ -31,7 +31,7 @@ export function DailyCheckCard() {
         Daily check
       </span>
       <span className="text-xl font-bold">Take your Daily BP Check</span>
-      <span className="text-sm text-pulse-50">One quick module, picked for you →</span>
+      <span className="text-sm text-pulse-50">One quick lesson, picked for you →</span>
     </button>
   );
 }

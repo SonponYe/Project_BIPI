@@ -1,0 +1,22 @@
+{
+  "id": 3,
+  "track": "climate-foundations",
+  "title": "Which Gas Is It?",
+  "format": "mini_game",
+  "assessmentMethod": "Drag-and-drop sorting accuracy",
+  "body": {
+    "en": "Two greenhouse gases trap most of the extra heat warming Ghana's climate. Sort each everyday source into the gas it mostly releases."
+  },
+  "items": [
+    { "id": "cooking-fires", "label": "Charcoal and wood cooking fires", "correctZoneId": "co2" },
+    { "id": "vehicle-exhaust", "label": "Petrol and diesel vehicle exhaust", "correctZoneId": "co2" },
+    { "id": "bush-burning", "label": "Bush burning to clear farmland", "correctZoneId": "co2" },
+    { "id": "landfill-waste", "label": "Rotting waste in landfills", "correctZoneId": "methane" },
+    { "id": "cattle", "label": "Cattle and livestock digestion", "correctZoneId": "methane" },
+    { "id": "rice-paddies", "label": "Flooded rice paddies", "correctZoneId": "methane" }
+  ],
+  "zones": [
+    { "id": "co2", "label": "Carbon Dioxide (CO2)" },
+    { "id": "methane", "label": "Methane (CH4)" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": 74,
+  "track": "disaster-preparedness",
+  "title": "Reducing Risk Before Disaster Strikes",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario simulation",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "Your community has identified that a nearby stream overflows almost every rainy season, but nothing has changed about how close houses are built to it. As a resident, what's the most effective risk-reduction step you can push for now, before the next rainy season?"
+  },
+  "choices": [
+    {
+      "label": "Advocate with the assembly for a buffer zone and proper drainage along the stream, and support it publicly",
+      "isCorrect": true,
+      "consequence": "Right focus. Disaster risk reduction works best before the disaster, not after — fixing the underlying exposure (building too close, poor drainage) prevents the same flood from repeating every single year."
+    },
+    {
+      "label": "Just make sure your own house has sandbags ready each time it rains",
+      "isCorrect": false,
+      "consequence": "This only protects you, and only partially. It does nothing about the underlying risk your whole community keeps facing year after year."
+    },
+    {
+      "label": "Assume it's not fixable and just accept it as normal",
+      "isCorrect": false,
+      "consequence": "This is exactly the assumption that lets recurring, preventable disasters keep repeating. Most flood risk from stream overflow is addressable with drainage and buffer planning."
+    }
+  ]
+}

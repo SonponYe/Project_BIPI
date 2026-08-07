@@ -30,7 +30,7 @@ export function BadgeProgress() {
   const percent = Math.min(100, (completed / BADGE_UNLOCK_THRESHOLD) * 100);
 
   return (
-    <section className="flex items-center gap-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+    <section className="flex items-center gap-4 rounded-3xl bg-white p-5 shadow-md">
       <ProgressRing
         percent={badgeName ? 100 : percent}
         label={badgeName ? "🏅" : `${completed}/${BADGE_UNLOCK_THRESHOLD}`}

@@ -1,0 +1,22 @@
+{
+  "id": 81,
+  "track": "green-economy",
+  "title": "Straight Line or Closed Loop?",
+  "format": "mini_game",
+  "assessmentMethod": "Drag-and-drop sorting accuracy",
+  "body": {
+    "en": "A linear economy takes, makes, and throws away. A circular economy keeps materials in use for as long as possible. Sort each practice into the economy it belongs to."
+  },
+  "items": [
+    { "id": "single-use-buy", "label": "Buying single-use plastic packaging and discarding it after one use", "correctZoneId": "linear" },
+    { "id": "repair-shop", "label": "Repairing a broken appliance instead of replacing it", "correctZoneId": "circular" },
+    { "id": "landfill", "label": "Sending unsorted waste straight to a landfill", "correctZoneId": "linear" },
+    { "id": "refill-station", "label": "Refilling a container at a bulk goods station", "correctZoneId": "circular" },
+    { "id": "fast-fashion", "label": "Buying cheap clothing designed to be discarded within a season", "correctZoneId": "linear" },
+    { "id": "resell-platform", "label": "Reselling or donating used goods instead of discarding them", "correctZoneId": "circular" }
+  ],
+  "zones": [
+    { "id": "linear", "label": "Linear (Take-Make-Waste)" },
+    { "id": "circular", "label": "Circular (Reuse & Repair)" }
+  ]
+}

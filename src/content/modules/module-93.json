@@ -1,0 +1,22 @@
+{
+  "id": 93,
+  "track": "green-economy",
+  "title": "Building Smarter for a Hotter Climate",
+  "format": "mini_game",
+  "assessmentMethod": "Drag-and-drop sorting accuracy",
+  "body": {
+    "en": "Some construction choices reduce heat, water use, and emissions; others make buildings less climate-resilient. Sort each choice."
+  },
+  "items": [
+    { "id": "earth-blocks", "label": "Using compressed earth blocks instead of standard concrete blocks", "correctZoneId": "green" },
+    { "id": "cross-ventilation", "label": "Large windows placed for natural cross-ventilation", "correctZoneId": "green" },
+    { "id": "solar-heater", "label": "Installing a solar water heater", "correctZoneId": "green" },
+    { "id": "reflective-roof", "label": "Painting the roof a reflective light colour", "correctZoneId": "green" },
+    { "id": "no-shading", "label": "Bare concrete walls with no shading or insulation", "correctZoneId": "standard" },
+    { "id": "imported-materials", "label": "Importing materials with high transport emissions when local options exist", "correctZoneId": "standard" }
+  ],
+  "zones": [
+    { "id": "green", "label": "Climate-Smart Choice" },
+    { "id": "standard", "label": "Standard Choice" }
+  ]
+}

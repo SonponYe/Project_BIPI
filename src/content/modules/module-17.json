@@ -1,0 +1,28 @@
+{
+  "id": 17,
+  "track": "climate-foundations",
+  "title": "The Gutter Outside Your Door",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 20,
+  "body": {
+    "en": "You notice the gutter right outside your house is blocked with plastic waste, and rain clouds are building overhead. What's the best action?"
+  },
+  "choices": [
+    {
+      "label": "Clear the blockage now, before the rain starts",
+      "isCorrect": true,
+      "consequence": "Right move. A blocked gutter right at your door floods your own house first — clearing it takes minutes and protects your home directly, before the rain even starts."
+    },
+    {
+      "label": "Leave it — clearing drains is the municipal assembly's job, not yours",
+      "isCorrect": false,
+      "consequence": "Costly wait. City drainage teams can't reach every gutter before every storm — the water blocked right outside your own door is the water that floods your own floor first."
+    },
+    {
+      "label": "Add more waste on top since it's already blocked anyway",
+      "isCorrect": false,
+      "consequence": "Makes it worse. Adding to a blocked drain guarantees the water has nowhere to go at all when the rain arrives."
+    }
+  ]
+}

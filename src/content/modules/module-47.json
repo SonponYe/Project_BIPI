@@ -1,0 +1,28 @@
+{
+  "id": 47,
+  "track": "daily-life-inclusion",
+  "title": "Getting to the Shelter Isn't the Whole Story",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "Flooding has forced your community into a shared emergency shelter for the night. It's crowded, poorly lit, and you're travelling with your younger sister. What matters most for both of you right now?"
+  },
+  "choices": [
+    {
+      "label": "Stay together, pick a spot near an exit and near other families you know, not an isolated corner",
+      "isCorrect": true,
+      "consequence": "Right instinct. Emergency shelters are exactly the setting where women and girls face the highest safety risks — staying visible, together, and near people you trust measurably reduces that risk."
+    },
+    {
+      "label": "Split up to each find the most comfortable spot separately",
+      "isCorrect": false,
+      "consequence": "Not safe. Splitting up in a crowded, poorly lit shelter removes the protection of staying together, especially for a younger sibling."
+    },
+    {
+      "label": "Take the quietest, most isolated corner of the shelter for privacy",
+      "isCorrect": false,
+      "consequence": "Higher risk, not lower. Isolated corners in emergency shelters are exactly where safety incidents are most likely to go unnoticed — visibility is protective, not a loss of privacy worth the trade."
+    }
+  ]
+}

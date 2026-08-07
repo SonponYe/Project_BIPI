@@ -1,0 +1,28 @@
+{
+  "id": 4,
+  "track": "climate-foundations",
+  "title": "Weather or Climate?",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 20,
+  "body": {
+    "en": "Your uncle says: 'It rained hard yesterday, so this climate change talk isn't real — the weather is just doing what weather does.' What's the best response?"
+  },
+  "choices": [
+    {
+      "label": "One rainy day is weather. Decades of rainfall becoming heavier and less predictable is climate.",
+      "isCorrect": true,
+      "consequence": "Exactly right. Weather is what's happening right now; climate is the long-term pattern behind it. A single storm doesn't prove or disprove climate change — the trend over years does."
+    },
+    {
+      "label": "Agree with him — one normal-looking rainy day means the climate is fine.",
+      "isCorrect": false,
+      "consequence": "Not quite. A single day of rain, on its own, tells you nothing about the climate — it's the long-term pattern of heavier, less predictable rain that's the real signal."
+    },
+    {
+      "label": "Tell him climate change means it should basically never rain normally again.",
+      "isCorrect": false,
+      "consequence": "That overstates it. Climate change shifts patterns and intensity over time — it doesn't mean every single day becomes abnormal."
+    }
+  ]
+}

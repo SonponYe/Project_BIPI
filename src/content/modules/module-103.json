@@ -1,0 +1,28 @@
+{
+  "id": 103,
+  "track": "green-economy",
+  "title": "Keeping Your Business Running Through a Disaster",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "You run a small tailoring business. A flood warning has just been issued for your area, and your workshop is on the ground floor. What's the most important business continuity step to take right now?"
+  },
+  "choices": [
+    {
+      "label": "Move your sewing machines, fabric stock, and financial records to higher ground immediately",
+      "isCorrect": true,
+      "consequence": "Right priority. For a small business, the equipment and stock often are the business — protecting them before the water arrives is what determines whether you reopen in days or in months."
+    },
+    {
+      "label": "Keep working until the water actually reaches the door",
+      "isCorrect": false,
+      "consequence": "Too late by design. Waiting until the last moment risks losing equipment and stock you can't easily replace, and losing time you needed to move it safely."
+    },
+    {
+      "label": "Assume insurance or savings will cover any losses, so no action is needed now",
+      "isCorrect": false,
+      "consequence": "Financial cover, if you have it, helps you recover — it doesn't prevent the disruption itself. Physically protecting your equipment now is what keeps the business running at all."
+    }
+  ]
+}

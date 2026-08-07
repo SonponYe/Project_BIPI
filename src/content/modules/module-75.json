@@ -1,0 +1,28 @@
+{
+  "id": 75,
+  "track": "disaster-preparedness",
+  "title": "The Warning Came in a Language Your Grandmother Doesn't Speak",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario simulation",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "A flood warning is broadcast on the radio, but only in English. Your grandmother, who lives with you, only understands Twi. What do you do?"
+  },
+  "choices": [
+    {
+      "label": "Translate the warning for her immediately and explain exactly what to do, in Twi",
+      "isCorrect": true,
+      "consequence": "Correct. An early warning that doesn't reach someone in a language they understand hasn't actually warned them at all — closing that gap yourself, right now, is what makes the warning system work for your household."
+    },
+    {
+      "label": "Assume she'll understand the tone and urgency even without the words",
+      "isCorrect": false,
+      "consequence": "Not reliable. Tone alone doesn't tell her what to actually do — move to higher ground, gather documents, when to leave. She needs the actual instructions, translated."
+    },
+    {
+      "label": "Wait for a Twi broadcast before telling her anything",
+      "isCorrect": false,
+      "consequence": "Too slow. Waiting for a translated broadcast that might not come in time wastes minutes she needs to prepare — translate it yourself now."
+    }
+  ]
+}

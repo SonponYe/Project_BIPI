@@ -1,0 +1,11 @@
+{
+  "id": 101,
+  "track": "green-economy",
+  "title": "Money That's Meant for Climate Problems",
+  "format": "audio_story",
+  "assessmentMethod": "Single reflective question after listening",
+  "body": {
+    "en": "Climate finance is money set aside specifically to help people and businesses adapt to or reduce climate risk — grants for flood-proofing homes, low-interest loans for solar equipment, funds for climate-resilient farming. It exists at community, national, and international levels, but most of it goes unclaimed every year, not because it isn't needed, but because the people it's meant for often don't know it exists, or assume it's not for them. Understanding that this money exists, and who it's actually for, is often the first and biggest barrier to accessing it."
+  },
+  "followUpQuestion": "According to the story, why does climate finance often go unclaimed even when it's needed?"
+}

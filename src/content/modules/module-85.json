@@ -1,0 +1,28 @@
+{
+  "id": 85,
+  "track": "green-economy",
+  "title": "The Small Business With a Water Problem",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "Your small food business uses a lot of water for washing and cooking, and water costs have been rising as supply gets less reliable. What's the most effective way to cut both your costs and your risk?"
+  },
+  "choices": [
+    {
+      "label": "Audit where the water is actually going, then fix the biggest single source of waste first",
+      "isCorrect": true,
+      "consequence": "Right approach. Resource efficiency starts with knowing where the waste actually is — most businesses find one or two big leaks that account for most of the loss, and fixing those first gives the biggest return."
+    },
+    {
+      "label": "Just raise your prices to cover the higher water costs",
+      "isCorrect": false,
+      "consequence": "This treats the symptom, not the cause — your costs and your exposure to unreliable water supply stay exactly the same, just passed on to customers."
+    },
+    {
+      "label": "Ignore it — water costs are out of your control anyway",
+      "isCorrect": false,
+      "consequence": "Not quite. How much water you use, and how efficiently, is very much within your control, even if the price per unit isn't."
+    }
+  ]
+}

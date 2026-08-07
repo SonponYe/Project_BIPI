@@ -21,7 +21,7 @@ export function DailyCheckCard() {
   return (
     <button
       onClick={handleClick}
-      className="group relative flex flex-col items-start gap-1 overflow-hidden rounded-2xl bg-gradient-to-br from-pulse-500 to-pulse-700 p-6 text-left text-white shadow-lg shadow-pulse-700/20 transition hover:-translate-y-0.5 hover:shadow-xl"
+      className="group relative flex flex-col items-start gap-1 overflow-hidden rounded-3xl bg-gradient-to-br from-pulse-500 to-pulse-700 p-6 text-left text-white shadow-lg shadow-pulse-700/25 transition hover:-translate-y-0.5 hover:shadow-xl"
     >
       <span
         aria-hidden="true"

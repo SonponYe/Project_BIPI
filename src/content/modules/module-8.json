@@ -1,0 +1,28 @@
+{
+  "id": 8,
+  "track": "climate-foundations",
+  "title": "Getting Your Household Ready",
+  "format": "scenario",
+  "assessmentMethod": "Household adaptation simulation",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "Your household wants to prepare for a harder rainy season this year, but you only have a small budget. What's the most effective first step?"
+  },
+  "choices": [
+    {
+      "label": "Clear and repair the drainage channel around the house before the rains start",
+      "isCorrect": true,
+      "consequence": "Good instinct. Most flood damage to homes in low-lying areas comes from blocked or broken drainage right at the property, not just heavy rain itself — fixing that first gives you the most protection for the least money."
+    },
+    {
+      "label": "Wait and see if it actually floods before spending anything",
+      "isCorrect": false,
+      "consequence": "Costly gamble. Drainage repairs are far cheaper done before a flood than the cleanup and losses after one."
+    },
+    {
+      "label": "Spend the whole budget on a generator instead",
+      "isCorrect": false,
+      "consequence": "Wrong priority. A generator doesn't protect your home from flood damage — it solves a different problem than the one you're actually facing this rainy season."
+    }
+  ]
+}

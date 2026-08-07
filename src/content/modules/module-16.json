@@ -1,0 +1,16 @@
+{
+  "id": 16,
+  "track": "climate-foundations",
+  "title": "Ghana's Coastline Is Disappearing",
+  "format": "news_clip",
+  "assessmentMethod": "Comprehension quiz after real footage",
+  "body": {
+    "en": "Watch this report on coastal erosion in Ghana, then answer what you saw."
+  },
+  "mediaUrl": "",
+  "questions": [
+    "Which coastal town or area did the report focus on?",
+    "About how much land is being lost each year, according to the report?",
+    "What did the report say communities or authorities are doing in response?"
+  ]
+}

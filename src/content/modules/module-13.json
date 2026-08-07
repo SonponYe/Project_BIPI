@@ -1,0 +1,28 @@
+{
+  "id": 13,
+  "track": "climate-foundations",
+  "title": "The Sky Just Turned Dark Grey",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 20,
+  "body": {
+    "en": "The sky has turned dark grey and the wind just picked up sharply. Local radio mentions a heavy rainfall warning for your area. What's the smartest move right now?"
+  },
+  "choices": [
+    {
+      "label": "Move valuables and documents off the floor, and check that your drainage is clear",
+      "isCorrect": true,
+      "consequence": "Smart. A rainfall warning is exactly the moment to act — a few minutes of prep now can be the difference between a wet floor and a ruined house full of damaged belongings."
+    },
+    {
+      "label": "Go outside to watch the storm build",
+      "isCorrect": false,
+      "consequence": "Not safe. Sudden strong wind ahead of heavy rain can bring down branches or debris — this is the time to prepare indoors, not watch from outside."
+    },
+    {
+      "label": "Ignore it — warnings are usually wrong anyway",
+      "isCorrect": false,
+      "consequence": "Risky assumption. Even if not every warning turns into a major event, the cost of ignoring the ones that do is much higher than the few minutes it takes to prepare."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": 92,
+  "track": "green-economy",
+  "title": "Sort It Right",
+  "format": "mini_game",
+  "assessmentMethod": "Drag-and-drop sorting accuracy",
+  "body": {
+    "en": "Recycling only works if waste is sorted correctly before collection. Sort each item into the category it belongs to."
+  },
+  "items": [
+    { "id": "water-bottles", "label": "Plastic water bottles", "correctZoneId": "plastic" },
+    { "id": "sachet-bags", "label": "Sachet water bags", "correctZoneId": "plastic" },
+    { "id": "cardboard", "label": "Newspaper and cardboard boxes", "correctZoneId": "paper" },
+    { "id": "food-peels", "label": "Food peels and leftovers", "correctZoneId": "organic" },
+    { "id": "drink-cans", "label": "Aluminium drink cans", "correctZoneId": "metal" },
+    { "id": "roofing-sheets", "label": "Old metal roofing sheets", "correctZoneId": "metal" }
+  ],
+  "zones": [
+    { "id": "plastic", "label": "Plastic" },
+    { "id": "paper", "label": "Paper" },
+    { "id": "organic", "label": "Organic" },
+    { "id": "metal", "label": "Metal" }
+  ]
+}

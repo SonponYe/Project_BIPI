@@ -1,0 +1,28 @@
+{
+  "id": 54,
+  "track": "daily-life-inclusion",
+  "title": "When the Water Rises and Your Wheelchair Doesn't Fit in the Truck",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "A flood evacuation is underway. You use a wheelchair that's essential to your daily independence, and the rescue vehicle arriving has no ramp and limited space. What should you insist on, right now?"
+  },
+  "choices": [
+    {
+      "label": "Tell the rescue team clearly that your wheelchair is essential equipment, not luggage, and ask what accessible transport options exist",
+      "isCorrect": true,
+      "consequence": "Right approach. Assistive devices aren't optional extras — leaving one behind can mean someone can't move safely for weeks afterward. Naming the need clearly is how it gets addressed instead of overlooked in the rush."
+    },
+    {
+      "label": "Leave the wheelchair behind to make space and worry about it later",
+      "isCorrect": false,
+      "consequence": "This creates a second emergency. Without the wheelchair, independent movement afterward — getting food, reaching medical care, using a shelter — becomes far harder, right when everything else is already disrupted."
+    },
+    {
+      "label": "Say nothing and hope someone thinks of it",
+      "isCorrect": false,
+      "consequence": "Too risky. In a fast-moving evacuation, needs that aren't clearly stated are the ones most likely to get missed entirely."
+    }
+  ]
+}

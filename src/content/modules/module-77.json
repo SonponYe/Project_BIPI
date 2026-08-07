@@ -1,0 +1,28 @@
+{
+  "id": 77,
+  "track": "disaster-preparedness",
+  "title": "One Household's Plan Isn't a Community Plan",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario simulation",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "Your household has its own emergency plan sorted. Your neighbour, an elderly man living alone, does not — and during the last flood, nobody checked on him until a full day later. What's the right next step for your street?"
+  },
+  "choices": [
+    {
+      "label": "Organise a simple street-level plan: who checks on whom, and a shared meeting point",
+      "isCorrect": true,
+      "consequence": "Exactly this. Individual household plans leave gaps for people who live alone or can't prepare on their own — a community-level plan is what catches those gaps before someone goes a full day unchecked."
+    },
+    {
+      "label": "Trust that someone else on the street will think to check on him",
+      "isCorrect": false,
+      "consequence": "This is precisely how he went unchecked for a full day — an assumption with no one actually responsible isn't a plan."
+    },
+    {
+      "label": "Decide it's not your street's responsibility, just his family's",
+      "isCorrect": false,
+      "consequence": "In an emergency, distant family often can't reach someone in time — the people actually nearby are the real safety net, whether it's formally 'their responsibility' or not."
+    }
+  ]
+}

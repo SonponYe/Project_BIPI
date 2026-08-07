@@ -1,0 +1,28 @@
+{
+  "id": 76,
+  "track": "disaster-preparedness",
+  "title": "Building Your Household Emergency Plan",
+  "format": "scenario",
+  "assessmentMethod": "Household emergency-plan builder",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "You're putting together your household's emergency plan for flood season. You can only tackle one piece first. Which gives you the most protection?"
+  },
+  "choices": [
+    {
+      "label": "Agree on a meeting point and who grabs the emergency documents, water, and medicine bag if you have to leave fast",
+      "isCorrect": true,
+      "consequence": "Right priority. Most harm during a fast-moving flood comes from confusion in the first few minutes — a clear plan for where to go and who grabs what removes that confusion before it costs you time."
+    },
+    {
+      "label": "Buy an expensive emergency kit and figure out the rest later",
+      "isCorrect": false,
+      "consequence": "Backwards order. A kit is useless if nobody agreed on the plan around it — coordination matters more than equipment as the first step."
+    },
+    {
+      "label": "Assume everyone will know what to do when it actually happens",
+      "isCorrect": false,
+      "consequence": "This is exactly what emergency plans exist to prevent. Under real pressure, people default to panic, not instinct — a plan discussed calmly beforehand is what actually gets followed."
+    }
+  ]
+}

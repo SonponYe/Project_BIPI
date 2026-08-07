@@ -1,0 +1,28 @@
+{
+  "id": 102,
+  "track": "green-economy",
+  "title": "Building a Financial Buffer Before the Next Shock",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "You've just received a small bonus. You know flood season is coming, and last year's flood cost your household real money in repairs and lost income. What's the smartest use of this money?"
+  },
+  "choices": [
+    {
+      "label": "Put it into a household emergency fund or savings group specifically for climate-related shocks",
+      "isCorrect": true,
+      "consequence": "Smart move. Financial resilience means having a buffer ready before the shock, not scrambling to find money during or after it — a dedicated fund is exactly that buffer."
+    },
+    {
+      "label": "Spend it all now since money in hand is worth more than money saved",
+      "isCorrect": false,
+      "consequence": "Risky, given what you already know is coming. Last year's flood cost real money — spending the one buffer you have now leaves you exactly as exposed as before."
+    },
+    {
+      "label": "Assume this year will be fine since last year is already over",
+      "isCorrect": false,
+      "consequence": "Not a safe assumption. Flood risk doesn't reset to zero just because last year has passed — the same conditions that caused it are often still there."
+    }
+  ]
+}

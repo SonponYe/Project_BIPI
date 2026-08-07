@@ -1,0 +1,28 @@
+{
+  "id": 53,
+  "track": "daily-life-inclusion",
+  "title": "Evacuation Planning That Actually Includes Everyone",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "Your neighbourhood is planning its flood evacuation route. One resident, Mr. Owusu, uses a wheelchair, and the route the group first proposed goes down a narrow alley with three steps at the end. What should happen next?"
+  },
+  "choices": [
+    {
+      "label": "Walk the proposed route with Mr. Owusu before finalising it, and adjust it based on what he finds",
+      "isCorrect": true,
+      "consequence": "Exactly right. A route that fails one resident during an actual flood isn't a backup plan — it's a plan that quietly excludes someone. Testing it with the people it needs to work for is how you catch that before it matters."
+    },
+    {
+      "label": "Finalise the route as planned — Mr. Owusu can find his own way separately",
+      "isCorrect": false,
+      "consequence": "This leaves a real gap. An evacuation plan that only works for some residents isn't a complete plan — during an actual flood, 'find his own way' can mean not getting out in time."
+    },
+    {
+      "label": "Assume someone will carry him if it comes to that",
+      "isCorrect": false,
+      "consequence": "Not a plan. Relying on an assumption that goes untested until the actual emergency is exactly how evacuation plans fail the people who need them most."
+    }
+  ]
+}

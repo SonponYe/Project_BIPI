@@ -1,0 +1,28 @@
+{
+  "id": 38,
+  "track": "youth-green-jobs",
+  "title": "Fact-Check Challenge: Is This Post True?",
+  "format": "scenario",
+  "assessmentMethod": "Fact-check classification challenge",
+  "timeLimitSeconds": 25,
+  "body": {
+    "en": "A post going around your group chat claims: 'Scientists actually agree climate change is just a natural cycle — it has nothing to do with human activity.' How should you classify this?"
+  },
+  "choices": [
+    {
+      "label": "False — the overwhelming scientific consensus is that human activity is the main driver of the climate change happening now",
+      "isCorrect": true,
+      "consequence": "Correct. Earth's climate has changed naturally before, but the specific, rapid warming happening now closely tracks the rise in human greenhouse gas emissions — that's not a natural-cycle coincidence, it's a well-established scientific finding."
+    },
+    {
+      "label": "Accurate — climate has always changed naturally, so this checks out",
+      "isCorrect": false,
+      "consequence": "This is the exact trick the claim relies on: it's true that climate has changed naturally in Earth's deep past, but that fact is being used to misleadingly wave away the current, human-driven warming — a different thing entirely."
+    },
+    {
+      "label": "Can't be verified either way, so best to just share it and let people decide",
+      "isCorrect": false,
+      "consequence": "This claim can be checked — it contradicts the documented scientific consensus. Sharing unverified claims that sound plausible is exactly how climate misinformation spreads."
+    }
+  ]
+}

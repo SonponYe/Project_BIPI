@@ -1,0 +1,16 @@
+{
+  "id": 6,
+  "track": "climate-foundations",
+  "title": "Ghana's Climate Hazards, Region by Region",
+  "format": "news_clip",
+  "assessmentMethod": "Comprehension quiz after real footage",
+  "body": {
+    "en": "Watch this overview of the climate hazards different parts of Ghana face, then answer what you saw."
+  },
+  "mediaUrl": "",
+  "questions": [
+    "Which hazard did the report say affects the north differently from the south?",
+    "Name one region-specific risk the report mentioned.",
+    "What adaptation measure did the report highlight?"
+  ]
+}

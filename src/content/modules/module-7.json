@@ -1,0 +1,28 @@
+{
+  "id": 7,
+  "track": "climate-foundations",
+  "title": "Midday Heat, Outdoor Work",
+  "format": "scenario",
+  "assessmentMethod": "Timed scenario task",
+  "timeLimitSeconds": 20,
+  "body": {
+    "en": "It's midday, around 38°C, and you've been laying blocks outside for three hours without a break. You feel dizzy and your mouth is dry. What do you do?"
+  },
+  "choices": [
+    {
+      "label": "Stop now, move to shade, drink water, and rest until you feel normal again",
+      "isCorrect": true,
+      "consequence": "Right call. Dizziness and dry mouth in heat are early heat-exhaustion signs. Stopping, cooling down, and rehydrating now prevents it becoming heat stroke, which can be life-threatening."
+    },
+    {
+      "label": "Push through — you're almost done for the day",
+      "isCorrect": false,
+      "consequence": "Risky. Ignoring early heat-exhaustion symptoms is exactly how heat stroke happens. The work will still be there after a 20-minute rest in the shade."
+    },
+    {
+      "label": "Drink a cold soda instead of water and keep working",
+      "isCorrect": false,
+      "consequence": "Not ideal. Sugary drinks rehydrate you more slowly than water and don't address the real problem — you need to stop and cool down, not just drink something cold."
+    }
+  ]
+}

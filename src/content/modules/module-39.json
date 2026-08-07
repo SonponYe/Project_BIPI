@@ -1,0 +1,23 @@
+{
+  "id": 39,
+  "track": "youth-green-jobs",
+  "title": "Which Green Skill Goes Where?",
+  "format": "mini_game",
+  "assessmentMethod": "Drag-and-drop sorting accuracy",
+  "body": {
+    "en": "Ghana's green economy spans several fast-growing sectors. Sort each skill into the sector it's most useful for."
+  },
+  "items": [
+    { "id": "electrical-wiring", "label": "Basic electrical wiring", "correctZoneId": "solar" },
+    { "id": "solar-install", "label": "Reading and installing solar panel systems", "correctZoneId": "solar" },
+    { "id": "sorting-plastics", "label": "Sorting and grading recyclable plastics", "correctZoneId": "waste" },
+    { "id": "composting", "label": "Composting and organic waste processing", "correctZoneId": "waste" },
+    { "id": "soil-testing", "label": "Soil testing and irrigation scheduling", "correctZoneId": "agriculture" },
+    { "id": "drought-crops", "label": "Selecting drought-resistant crop varieties", "correctZoneId": "agriculture" }
+  ],
+  "zones": [
+    { "id": "solar", "label": "Solar & Energy" },
+    { "id": "waste", "label": "Waste & Recycling" },
+    { "id": "agriculture", "label": "Climate-Smart Agriculture" }
+  ]
+}

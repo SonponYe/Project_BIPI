@@ -1,0 +1,22 @@
+{
+  "id": 79,
+  "track": "disaster-preparedness",
+  "title": "Insurance or Community Savings Pool?",
+  "format": "mini_game",
+  "assessmentMethod": "Drag-and-drop sorting accuracy",
+  "body": {
+    "en": "Both formal insurance and community savings pools help households recover after a disaster, but they work differently. Sort each description into the one it describes."
+  },
+  "items": [
+    { "id": "shared-fund", "label": "Neighbours each contribute monthly; anyone can draw on it after a shared disaster", "correctZoneId": "pooling" },
+    { "id": "fixed-payout", "label": "A paid policy that pays a fixed amount if your named risk (e.g. flood) happens", "correctZoneId": "insurance" },
+    { "id": "legal-obligation", "label": "Backed by a registered company with legal payout obligations", "correctZoneId": "insurance" },
+    { "id": "trust-based", "label": "Relies on trust and rules the group itself agrees on", "correctZoneId": "pooling" },
+    { "id": "flexible-payout", "label": "Slower payout, but flexible with no company approval process needed", "correctZoneId": "pooling" },
+    { "id": "regular-premium", "label": "Requires regular payments even in years nothing happens", "correctZoneId": "insurance" }
+  ],
+  "zones": [
+    { "id": "insurance", "label": "Formal Insurance" },
+    { "id": "pooling", "label": "Community Savings Pool" }
+  ]
+}

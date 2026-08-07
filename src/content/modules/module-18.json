@@ -1,0 +1,16 @@
+{
+  "id": 18,
+  "track": "climate-foundations",
+  "title": "When Ecosystems Break Down",
+  "format": "news_clip",
+  "assessmentMethod": "Comprehension quiz after real footage",
+  "body": {
+    "en": "Watch this report on how deforestation and mining are affecting Ghana's ecosystems, then answer what you saw."
+  },
+  "mediaUrl": "",
+  "questions": [
+    "What ecosystem or resource did the report say is most affected?",
+    "What human activity did the report link to the damage?",
+    "What did experts in the report recommend?"
+  ]
+}

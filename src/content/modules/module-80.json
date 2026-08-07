@@ -1,0 +1,23 @@
+{
+  "id": 80,
+  "track": "disaster-preparedness",
+  "title": "Nature's Own Defences",
+  "format": "mini_game",
+  "assessmentMethod": "Drag-and-drop sorting accuracy",
+  "body": {
+    "en": "Nature-based solutions use ecosystems themselves to reduce disaster risk. Sort each solution by the hazard it mainly protects against."
+  },
+  "items": [
+    { "id": "mangroves", "label": "Restoring mangroves along the coast", "correctZoneId": "erosion" },
+    { "id": "riverbank-trees", "label": "Planting trees and grass along riverbanks", "correctZoneId": "flooding" },
+    { "id": "check-dams", "label": "Rainwater harvesting and small check dams", "correctZoneId": "drought" },
+    { "id": "wetlands", "label": "Protecting wetlands that absorb excess rainfall", "correctZoneId": "flooding" },
+    { "id": "dune-vegetation", "label": "Restoring sand dunes and beach vegetation", "correctZoneId": "erosion" },
+    { "id": "agroforestry", "label": "Agroforestry and drought-resistant crop cover", "correctZoneId": "drought" }
+  ],
+  "zones": [
+    { "id": "flooding", "label": "Flooding" },
+    { "id": "erosion", "label": "Coastal Erosion" },
+    { "id": "drought", "label": "Drought" }
+  ]
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import { SpeakButton } from "@/components/SpeakButton";
 import type { Language } from "@/types/user";
 
 const LANGUAGES: { code: Language; label: string }[] = [
@@ -13,7 +14,13 @@ const LANGUAGES: { code: Language; label: string }[] = [
 export function LanguagePicker({ onSelect }: { onSelect: (language: Language) => void }) {
   return (
     <div className="flex flex-col items-center gap-4 p-6">
-      <h2 className="text-lg font-semibold text-pulse-700">How do you prefer to use the app?</h2>
+      <div className="flex items-center gap-2">
+        <h2 className="text-lg font-semibold text-pulse-700">How do you prefer to use the app?</h2>
+        <SpeakButton
+          text="How do you prefer to use the app? Choose from: Twi, Pidgin, or English."
+          className="h-7 w-7"
+        />
+      </div>
       <div className="flex gap-3">
         {LANGUAGES.map(({ code, label }) => (
           <button

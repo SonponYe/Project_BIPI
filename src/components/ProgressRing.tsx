@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 // Plain SVG, no charting library — a stroke-dashoffset ring is the whole
 // technique. Used for "progress toward your next badge" on the dashboard
 // and profile page.
@@ -7,12 +9,15 @@ export function ProgressRing({
   strokeWidth = 8,
   label,
   sublabel,
+  ariaLabel,
 }: {
   percent: number; // 0-100
   size?: number;
   strokeWidth?: number;
-  label: string;
+  label: ReactNode;
   sublabel?: string;
+  /** Accessible name, since `label` can be a non-text icon. Defaults to the percentage. */
+  ariaLabel?: string;
 }) {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -20,7 +25,13 @@ export function ProgressRing({
 
   return (
     <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="-rotate-90" role="img" aria-label={`${label}${sublabel ? `, ${sublabel}` : ""}`}>
+      <svg
+        width={size}
+        height={size}
+        className="-rotate-90"
+        role="img"
+        aria-label={ariaLabel ?? `${Math.round(percent)}% complete`}
+      >
         <circle
           cx={size / 2}
           cy={size / 2}

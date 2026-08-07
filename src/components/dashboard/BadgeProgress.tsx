@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ProgressRing } from "@/components/ProgressRing";
 import { ShareBadgeButton } from "@/components/ShareBadgeButton";
+import { MedalIcon } from "@/components/icons";
 import { getOrCreateDeviceId } from "@/lib/identity/device-id";
 import { getDistrictBadge, BADGE_UNLOCK_THRESHOLD } from "@/lib/gamification/badges";
 import type { ProgressSummary } from "@/lib/gamification/progress";
@@ -33,8 +34,15 @@ export function BadgeProgress() {
     <section className="flex items-center gap-4 rounded-3xl bg-white p-5 shadow-md">
       <ProgressRing
         percent={badgeName ? 100 : percent}
-        label={badgeName ? "🏅" : `${completed}/${BADGE_UNLOCK_THRESHOLD}`}
+        label={
+          badgeName ? (
+            <MedalIcon className="h-7 w-7 text-pulse-600" />
+          ) : (
+            `${completed}/${BADGE_UNLOCK_THRESHOLD}`
+          )
+        }
         sublabel={badgeName ? undefined : "check-ins"}
+        ariaLabel={badgeName ? `Badge earned: ${badgeName}` : `${completed} of ${BADGE_UNLOCK_THRESHOLD} check-ins`}
       />
       <div className="flex flex-1 flex-col gap-2">
         {badgeName ? (

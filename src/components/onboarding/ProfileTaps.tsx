@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { CarePriority, ContentPreference, DemographicType } from "@/types/user";
+import { SpeakButton } from "@/components/SpeakButton";
+import type { CarePriority, ContentPreference, DemographicType, Language } from "@/types/user";
 
 // Three taps, no typing, no keyboard — part of onboarding screen 1
 // (language + these taps + consent, all one page). Region is its own
@@ -9,8 +10,10 @@ import type { CarePriority, ContentPreference, DemographicType } from "@/types/u
 // product direction: keep screen 1 to "the huge parts," region gets its
 // own screen.
 export function ProfileTaps({
+  language = "en",
   onComplete,
 }: {
+  language?: Language;
   onComplete: (profile: {
     demographicType: DemographicType;
     carePriorities: CarePriority[];
@@ -27,6 +30,7 @@ export function ProfileTaps({
       <TapStep
         heading="I am..."
         options={options}
+        language={language}
         onPick={(value) => {
           setDemographicType(value);
           setStep(1);
@@ -41,6 +45,7 @@ export function ProfileTaps({
       <TapStep
         heading="I care most about... (pick up to two)"
         options={options}
+        language={language}
         multi
         selected={carePriorities}
         onToggle={(value) => {
@@ -62,6 +67,7 @@ export function ProfileTaps({
     <TapStep
       heading="I prefer to..."
       options={options}
+      language={language}
       onPick={(value) =>
         onComplete({
           demographicType: demographicType!,
@@ -81,6 +87,7 @@ export function TapStep<T extends string>({
   selected,
   onToggle,
   onContinue,
+  language = "en",
 }: {
   heading: string;
   options: readonly T[];
@@ -89,10 +96,16 @@ export function TapStep<T extends string>({
   selected?: T[];
   onToggle?: (value: T) => void;
   onContinue?: () => void;
+  language?: Language;
 }) {
+  const readable = `${heading}. Choose from: ${options.map((o) => o.replace(/-/g, " ")).join(", ")}.`;
+
   return (
     <div className="flex flex-col items-center gap-4 p-6">
-      <h2 className="text-lg font-semibold text-pulse-700">{heading}</h2>
+      <div className="flex items-center gap-2">
+        <h2 className="text-lg font-semibold text-pulse-700">{heading}</h2>
+        <SpeakButton text={readable} language={language} className="h-7 w-7" />
+      </div>
       <div className="flex flex-wrap justify-center gap-3">
         {options.map((option) => {
           const isSelected = selected?.includes(option);

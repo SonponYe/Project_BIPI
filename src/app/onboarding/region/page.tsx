@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { TapStep } from "@/components/onboarding/ProfileTaps";
 import { GHANA_REGIONS, type GhanaRegion } from "@/content/ghana-regions";
@@ -12,10 +13,14 @@ import type { Language } from "@/types/user";
 // is saved to Supabase until onboarding is fully complete.
 export default function RegionPage() {
   const router = useRouter();
+  const [language, setLanguage] = useState<Language>("en");
+
+  useEffect(() => {
+    setLanguage((window.localStorage.getItem("bipi_language") as Language) ?? "tw");
+  }, []);
 
   async function handlePick(region: GhanaRegion) {
     const deviceId = getOrCreateDeviceId();
-    const language = (window.localStorage.getItem("bipi_language") as Language) ?? "tw";
     const draftProfile = JSON.parse(window.localStorage.getItem("bipi_profile") ?? "{}");
     const fullProfile = { ...draftProfile, region };
     window.localStorage.setItem("bipi_profile", JSON.stringify(fullProfile));
@@ -37,7 +42,12 @@ export default function RegionPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center">
-      <TapStep heading="Which region are you in?" options={GHANA_REGIONS} onPick={handlePick} />
+      <TapStep
+        heading="Which region are you in?"
+        options={GHANA_REGIONS}
+        language={language}
+        onPick={handlePick}
+      />
     </main>
   );
 }

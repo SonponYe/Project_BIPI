@@ -6,6 +6,7 @@ import Image from "next/image";
 import { LanguagePicker } from "@/components/onboarding/LanguagePicker";
 import { ProfileTaps } from "@/components/onboarding/ProfileTaps";
 import { ConsentScreen } from "@/components/onboarding/ConsentScreen";
+import { SpeakButton } from "@/components/SpeakButton";
 import type { CarePriority, ContentPreference, DemographicType, Language } from "@/types/user";
 
 type Step = "language" | "profile" | "consent";
@@ -51,15 +52,18 @@ export default function OnboardingPage() {
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 bg-gradient-to-b from-pulse-50 via-white to-white px-4">
       <Image src="/icons/icon.png" alt="BIPI" width={64} height={64} className="rounded-full" />
       {step === "language" && (
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-pulse-800">Welcome to BIPI</h1>
-          <p className="mt-1 text-sm text-gray-500">Know the signs. Act before the crisis.</p>
+        <div className="flex items-center gap-2 text-center">
+          <div>
+            <h1 className="text-2xl font-bold text-pulse-800">Welcome to BIPI</h1>
+            <p className="mt-1 text-sm text-gray-500">Know the signs. Act before the crisis.</p>
+          </div>
+          <SpeakButton text="Welcome to BIPI. Know the signs, act before the crisis." />
         </div>
       )}
 
       <div className="w-full max-w-md rounded-2xl bg-white p-2 shadow-sm">
         {step === "language" && <LanguagePicker onSelect={handleLanguage} />}
-        {step === "profile" && <ProfileTaps onComplete={handleProfile} />}
+        {step === "profile" && <ProfileTaps language={language} onComplete={handleProfile} />}
         {step === "consent" && <ConsentScreen language={language} onDecision={handleConsent} />}
       </div>
 

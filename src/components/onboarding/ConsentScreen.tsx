@@ -1,6 +1,7 @@
 "use client";
 
 import { t } from "@/lib/i18n";
+import { SpeakButton } from "@/components/SpeakButton";
 import type { Language } from "@/types/user";
 
 // Stage 3: Ghana Data Protection Act 2012 (Act 843) compliant consent.
@@ -15,7 +16,14 @@ export function ConsentScreen({
 }) {
   return (
     <div className="mx-auto flex max-w-md flex-col gap-4 p-6 text-center">
-      <h2 className="text-lg font-semibold text-pulse-700">{t("consent_title", language)}</h2>
+      <div className="flex items-center justify-center gap-2">
+        <h2 className="text-lg font-semibold text-pulse-700">{t("consent_title", language)}</h2>
+        <SpeakButton
+          text={`${t("consent_title", language)}. ${t("consent_body", language)}`}
+          language={language}
+          className="h-7 w-7"
+        />
+      </div>
       <p className="leading-relaxed text-gray-600">{t("consent_body", language)}</p>
       <div className="mt-4 flex flex-col gap-3">
         <button

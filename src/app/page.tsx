@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { GreetingHeader } from "@/components/dashboard/GreetingHeader";
+import { DashboardStats } from "@/components/dashboard/DashboardStats";
 import { CommunityFeed } from "@/components/dashboard/CommunityFeed";
 import { DailyCheckCard } from "@/components/dashboard/DailyCheckCard";
 import { BadgeProgress } from "@/components/dashboard/BadgeProgress";
@@ -26,11 +28,9 @@ export default function DashboardPage() {
   if (!ready) return null;
 
   return (
-    <main className="mx-auto flex max-w-xl flex-col gap-8 px-4 py-8">
-      <header>
-        <h1 className="text-2xl font-bold text-pulse-800">BIPI</h1>
-        <p className="text-sm text-gray-500">Know the signs. Act before the crisis.</p>
-      </header>
+    <main className="mx-auto flex max-w-xl flex-col gap-4 px-4 py-8">
+      <GreetingHeader />
+      <DashboardStats />
       <BadgeProgress />
       <CommunityFeed />
       <DailyCheckCard />
